@@ -2,5 +2,6 @@
   "name": "@pepfar-react-lib/easytest",
   "version": "1.0.0",
   "dependencies": {
-  }
+  },
+  "type": "module"
 }

@@ -3,6 +3,7 @@ import {getPackageJson} from "../lib/services/getPackageJson.service";
 import {fullCopy} from "../lib/services/fullCopy.service";
 import {splitPackageName} from "../lib/services/getPackageName.service";
 import {removePeerDependencies} from "../lib/services/removePeerDependencies.service";
+import {watchFiles} from "../lib/services/watchFiles.service";
 
 let path:string = process.argv[2];
 getPackageJson(path).then(async (packageJson:PackageJson)=>{
@@ -11,6 +12,6 @@ getPackageJson(path).then(async (packageJson:PackageJson)=>{
     await fullCopy(path,packageName);
     console.log(`Initial copy complete.`);
     removePeerDependencies(packageJson);
-    watchFiles(packageJson);
+    watchFiles(path, packageName);
 })
 
