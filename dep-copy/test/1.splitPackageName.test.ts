@@ -1,5 +1,5 @@
-import {getPackageName} from "../lib/services/getPackageName.service";
-import {PackageName} from "../lib/types/packageName.type";
+import {splitPackageName} from "../lib/services/getPackageName.service";
+import {PackageName} from "../lib/types/package.type";
 
 type TestCase = {
     input:string,
@@ -15,8 +15,8 @@ const testCases:TestCase[] = [{
 }]
 
 function generateTest({input, output}) {
-    test(`1 > getPackageName ${input}`, () => {
-        expect(getPackageName(input)).toStrictEqual(output)
+    test(`1 > splitPackageName ${input}`, () => {
+        expect(splitPackageName(input)).toStrictEqual(output)
     })
 }
 
