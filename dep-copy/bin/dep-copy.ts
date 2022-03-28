@@ -5,7 +5,6 @@ import {splitPackageName} from "../lib/services/getPackageName.service";
 import {removePeerDependencies} from "../lib/services/removePeerDependencies.service";
 import {watchFiles} from "../lib/services/watchFiles.service";
 
-process.chdir('../../..');
 console.log(`CWD is ${process.cwd()}`)
 
 let path:string = process.argv[2];
