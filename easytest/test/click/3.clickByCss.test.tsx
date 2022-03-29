@@ -1,18 +1,12 @@
 import React from "react";
-import {screen, render} from "@testing-library/react";
-import {click, clickByCss, clickByText} from "../../modules/click.utils";
+import {clickByCss} from "../../modules/click.utils";
+import {generateClickTest} from "./click.testService";
 
-const onClick = jest.fn();
-
-function TestPage(){
-    return <div id="parent">
+function TestPage({onClick}){
+    return <div className="parent">
         <div><button/></div>
-        <div className="target"><button onClick={onClick}>toclick</button></div>
+        <div className="target"><button onClick={onClick}>Button 1</button></div>
     </div>
 }
 
-test(`3 > Click by CSS`, async ()=>{
-    render(<TestPage/>)
-    clickByCss('#parent .target button');
-    expect(onClick).toBeCalledTimes(1);
-})
+generateClickTest(clickByCss, '.parent .target button',TestPage);

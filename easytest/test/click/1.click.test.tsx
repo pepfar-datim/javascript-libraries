@@ -1,15 +1,9 @@
 import React from "react";
-import {screen, render} from "@testing-library/react";
 import {click} from "../../modules/click.utils";
+import {generateClickTest} from "./click.testService";
 
-const onClick = jest.fn();
-
-function TestPage(){
-    return <div><button data-testid={'toclick'} onClick={onClick}>toclick</button></div>
+function TestPage({onClick}){
+    return <div><button data-testid={'testIdToFind'} onClick={onClick}>Button 1</button></div>
 }
 
-test(`1 > Click`, async ()=>{
-    render(<TestPage/>)
-    click('toclick');
-    expect(onClick).toBeCalledTimes(1);
-})
+generateClickTest(click, 'testIdToFind',TestPage);
