@@ -1,15 +1,15 @@
 import React from "react";
 import {screen, render} from "@testing-library/react";
-import {click} from "../modules/click.utils";
+import {click, clickByText} from "../../modules/click.utils";
 
 const onClick = jest.fn();
 
 function TestPage(){
-    return <div><button data-testid={'toclick'} onClick={onClick}>toclick</button></div>
+    return <div><button onClick={onClick}>toclick</button></div>
 }
 
-test(`1 > Click`, async ()=>{
+test(`2 > Click by text`, async ()=>{
     render(<TestPage/>)
-    click('toclick');
+    clickByText('toclick');
     expect(onClick).toBeCalledTimes(1);
 })
