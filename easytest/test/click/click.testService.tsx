@@ -1,5 +1,4 @@
 import {render} from "@testing-library/react";
-import {click} from "../../modules/click.utils";
 import React, {ReactElement} from "react";
 
 
