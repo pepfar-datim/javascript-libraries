@@ -1,6 +1,6 @@
 import React from "react";
 import {render} from "@testing-library/react";
-import {noText, text} from "../../modules/text.utils";
+import {noText, noTexts, text, texts} from "../../modules/text.utils";
 import {toFail} from "../shared/shared.testService";
 
 function Page(){
@@ -22,4 +22,9 @@ test(`4 > Text`, ()=>{
 test('4 > No text', ()=>{
     noText('not to be found')
     toFail(()=>noText('text to be found'))
+})
+
+test('4 > No text', ()=>{
+    texts(['text', 'to', 'be', 'found'])
+    toFail(()=>noTexts(['not', 'to', 'be', 'found']))
 })

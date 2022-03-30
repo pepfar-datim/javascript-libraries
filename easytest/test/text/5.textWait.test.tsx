@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {render} from "@testing-library/react";
-import {noText, text, textWait} from "../../modules/text.utils";
+import {noText, text, textsWait, textWait} from "../../modules/text.utils";
 import {toAsyncFail} from "../shared/shared.testService";
 
 const pageDelay = 500;
@@ -25,4 +25,15 @@ test(`5 > Text wait should fail`, async ()=>{
     render(<Page/>);
     text('Waiting for content');
     await toAsyncFail(async ()=>await textWait('unexpected content'));
+})
+
+test(`5 > Texts wait `, async ()=>{
+    render(<Page/>);
+    await textsWait(['content', 'delivered']);
+})
+
+test(`5 > Texts wait should fail`, async ()=>{
+    render(<Page/>);
+    let statement = async ()=>await textsWait(['content', 'delivered', 'now']);
+    await toAsyncFail(statement);
 })
