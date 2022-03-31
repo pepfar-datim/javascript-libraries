@@ -1,8 +1,4 @@
 name: Test template
-
-#runs:
-#  using: 'composite'
-
 on:
   workflow_call:
     inputs:
@@ -13,10 +9,6 @@ jobs:
   easytest:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "Inputs $INPUTS"
-        env:
-          INPUTS: ${{ inputs.project }}
       - name: git clone
         uses: actions/checkout@v2
       - name: npm install

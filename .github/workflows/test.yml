@@ -2,7 +2,12 @@ name: Execute Tests
 on: [push]
 jobs:
   easytest:
-    name: Run tests for easytest
+    name: npm test @ easytest
     uses: ./.github/workflows/testTemplate.yml
     with:
       project: easytest
+  dep-copy:
+    name: npm test @ dep-copy
+    uses: ./.github/workflows/testTemplate.yml
+    with:
+      project: dep-copy
