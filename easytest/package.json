@@ -4,7 +4,8 @@
   "description": "Intuitive wrapper for @testing-library",
   "main": "index.ts",
   "scripts": {
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "test:ci": "jest"
   },
   "peerDependencies": {
     "@testing-library/jest-dom": "5.16.3",

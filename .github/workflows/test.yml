@@ -15,4 +15,4 @@ jobs:
         run: npm i --force
       - name: Run Tests
         working-directory: ./easytest
-        run: npm run test
+        run: npm run test:ci
