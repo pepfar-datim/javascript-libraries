@@ -4,5 +4,5 @@ jobs:
   easytest:
     name: Run tests for easytest
     uses: ./.github/templates/test
-      with:
-        project: easytest
+    with:
+      project: easytest
