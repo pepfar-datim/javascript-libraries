@@ -18,7 +18,7 @@ jobs:
       - name: git clone
         uses: actions/checkout@v2
       - name: npm install
-        working-directory: ./${{ inputs.project }}
+        working-directory: ./${{ github.event.inputs.project }}
         run: npm i --force
       - name: Run Tests
         working-directory: ./${{ inputs.project }}
