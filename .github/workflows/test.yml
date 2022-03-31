@@ -5,6 +5,9 @@ jobs:
     name: Run tests for easytest
     runs-on: ubuntu-latest
     steps:
+      - name: git clone
+        uses: actions/checkout@v2
+      - run: ls -l .github/workflows
       - uses: ./.github/workflows/testTemplate.yml
         with:
-          project: "easytest"
+          project: easytest
