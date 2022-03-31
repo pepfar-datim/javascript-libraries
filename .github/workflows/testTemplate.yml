@@ -12,8 +12,6 @@ on:
 jobs:
   easytest:
     runs-on: ubuntu-latest
-    with:
-      project: easytest
     steps:
       - run: |
           echo "Inputs $INPUTS"
