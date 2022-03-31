@@ -22,10 +22,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: easytest
-      - run: ls -l
       - name: npm install
-        working-directory: ./easytest
         run: npm i --force
       - name: Run Tests
-        working-directory: ./easytest
         run: npm run test:ci
