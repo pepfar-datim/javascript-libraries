@@ -3,6 +3,6 @@ on: [push]
 jobs:
   easytest:
     name: Run tests for easytest
-    uses: ./.github/workflows/testTemplate.yml@master
+    uses: ./.github/workflows/testTemplate.yml
     with:
       project: easytest
