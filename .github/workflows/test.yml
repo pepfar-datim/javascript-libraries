@@ -1,28 +1,14 @@
 name: Tests
 on: [push]
 jobs:
-  setup:
+  easytest:
     runs-on: ubuntu-latest
     steps:
-      - name: Install node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
       - name: git clone
         uses: actions/checkout@v2
-      - name: Upload build
-        uses: actions/upload-artifact@v2
-        with:
-          name: easytest
-          path: ./easytest
-  test-easytest:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: easytest
       - name: npm install
+        working-directory: ./easytest
         run: npm i --force
       - name: Run Tests
+        working-directory: ./easytest
         run: npm run test:ci
