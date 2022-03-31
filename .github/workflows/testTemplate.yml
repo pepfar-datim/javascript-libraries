@@ -1,0 +1,21 @@
+name: Test template
+on:
+  workflow_call:
+    inputs:
+      project:
+        required: true
+        type: string
+jobs:
+  easytest:
+    runs-on: ubuntu-latest
+    with:
+      project: easytest
+    steps:
+      - name: git clone
+        uses: actions/checkout@v2
+      - name: npm install
+        working-directory: ./${{ inputs.project }}
+        run: npm i --force
+      - name: Run Tests
+        working-directory: ./${{ inputs.project }}
+        run: npm run test:ci
