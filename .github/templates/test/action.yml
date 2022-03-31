@@ -15,11 +15,15 @@ jobs:
     with:
       project: easytest
     steps:
-      - name: git clone
-        uses: actions/checkout@v2
-      - name: npm install
-        working-directory: ./${{ github.event.inputs.project }}
-        run: npm i --force
-      - name: Run Tests
-        working-directory: ./${{ inputs.project }}
-        run: npm run test:ci
+      - run: |
+          echo "Inputs $INPUTS"
+        env:
+          INPUTS: ${{ github.event.inputs.project }}
+#      - name: git clone
+#        uses: actions/checkout@v2
+#      - name: npm install
+#        working-directory: ./${{ github.event.inputs.project }}
+#        run: npm i --force
+#      - name: Run Tests
+#        working-directory: ./${{ inputs.project }}
+#        run: npm run test:ci
