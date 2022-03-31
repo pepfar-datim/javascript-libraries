@@ -1,0 +1,18 @@
+name: Tests
+on: [push]
+jobs:
+  easytest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: git clone
+        uses: actions/checkout@v2
+      - name: npm install
+        working-directory: ./easytest
+        run: npm i --force
+      - name: Run Tests
+        working-directory: ./easytest
+        run: npm run test
