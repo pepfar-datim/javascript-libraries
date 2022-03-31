@@ -2,12 +2,10 @@ name: Execute Tests
 on: [push]
 jobs:
   easytest:
-    name: Tests @
     uses: ./.github/workflows/testTemplate.yml
     with:
       project: easytest
   dep-copy:
-    name: Tests @
     uses: ./.github/workflows/testTemplate.yml
     with:
       project: dep-copy
