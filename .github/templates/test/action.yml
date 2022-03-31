@@ -1,7 +1,7 @@
 name: Test template
 
-runs:
-  using: 'composite'
+#runs:
+#  using: 'composite'
 
 on:
   workflow_call:
