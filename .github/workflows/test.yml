@@ -3,10 +3,7 @@ on: [push]
 jobs:
   easytest:
     name: Run tests for easytest
-    runs-on: ubuntu-latest
     steps:
-      - name: git clone
-        uses: actions/checkout@v2
       - uses: ./.github/templates/test
         with:
           project: easytest
