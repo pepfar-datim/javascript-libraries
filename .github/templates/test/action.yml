@@ -1,5 +1,8 @@
 name: Test template
 
+runs:
+  using: 'composite'
+
 on:
   workflow_call:
     inputs:
@@ -15,8 +18,8 @@ jobs:
       - name: git clone
         uses: actions/checkout@v2
       - name: npm install
-        working-directory: ./${{ github.event.inputs.project }}
+        working-directory: ./${{ inputs.project }}
         run: npm i --force
       - name: Run Tests
-        working-directory: ./${{ github.event.inputs.project }}
+        working-directory: ./${{ inputs.project }}
         run: npm run test:ci

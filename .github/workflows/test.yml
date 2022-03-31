@@ -7,7 +7,6 @@ jobs:
     steps:
       - name: git clone
         uses: actions/checkout@v2
-      - run: ls -l .github/workflows
       - uses: ./.github/templates/test
         with:
           project: easytest
