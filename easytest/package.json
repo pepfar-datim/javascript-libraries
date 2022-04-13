@@ -1,6 +1,6 @@
 {
   "name": "@pepfar-react-lib/easytest",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Intuitive wrapper for @testing-library",
   "main": "index.ts",
   "scripts": {
