@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "sourceMap": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "es-node": {
+    "tsm": true
+  }
+}

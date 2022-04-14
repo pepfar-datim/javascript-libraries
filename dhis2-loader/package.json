@@ -1,0 +1,21 @@
+{
+  "name": "@pepfar-react-lib/dhis2-loader",
+  "version": "0.0.1",
+  "description": "Scripts to load data into DHIS2",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "author": "Jakub Flaska",
+  "license": "ISC",
+  "private": false,
+  "devDependencies": {
+    "@types/node": "^17.0.24"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "node-fetch": "^3.2.3",
+    "yargs": "^17.4.1"
+ },
+  "type": "module"
+}
