@@ -1,16 +1,18 @@
-import {ApiResponse} from "../types/apiResponse.type";
 import {error} from "./print";
-import fetch from 'node-fetch';
-// let fetch = require('node-fetch')
+import fetch, {Response} from 'node-fetch';
 
 async function handleErrors(apiResponse:any){
-    if (apiResponse.ok) return apiResponse;
+    if (apiResponse.ok && !apiResponse.redirected) return apiResponse;
     let responseBody = '(empty)';
     try {
         let response = JSON.parse(await apiResponse.text() as any);
         if (response.message) responseBody = response.message;
     } catch(e){
         responseBody = 'ERROR: Cannot retrieve server response'
+    }
+    if (apiResponse.redirected&&apiResponse.url.includes('login')) {
+        error(`ERROR: Login failed`);
+        return apiResponse;
     }
     error(
         `Server request failed`,
@@ -19,9 +21,10 @@ async function handleErrors(apiResponse:any){
         `Status:\t  ${apiResponse.status} (${apiResponse.statusText})`,
         `Response: ${responseBody}`
     );
+    return apiResponse;
 }
 
-export async function postJson(url:string,data:any,authorization:string):Promise<ApiResponse>{
+export async function postJson(url:string,data:any,authorization:string):Promise<Response>{
     return fetch(url, {
         headers: {
             'Authorization': authorization,

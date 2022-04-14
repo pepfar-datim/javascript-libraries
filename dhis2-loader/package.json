@@ -10,12 +10,12 @@
   "license": "ISC",
   "private": false,
   "devDependencies": {
-    "@types/node": "^17.0.24"
+    "@types/node": "^17.0.24",
+    "@types/node-fetch": "^2.6.1"
   },
   "dependencies": {
     "colors": "^1.4.0",
-    "node-fetch": "^3.2.3",
-    "yargs": "^17.4.1"
- },
-  "type": "module"
+    "node-fetch": "^2.6.7"
+  },
+  "type": "commonjs"
 }

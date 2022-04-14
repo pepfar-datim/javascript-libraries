@@ -50,4 +50,4 @@ const globalUser = {
     "userAccesses": []
 };
 
-loadUsers([globalUser],'jakub.datim.org','amZsYXNrYTpHcmVlbjE4IQ==')
+loadUsers([globalUser],'jakub.datim.org','Basic --amZsYXNrYTpHcmVlbjE4IQ==')
