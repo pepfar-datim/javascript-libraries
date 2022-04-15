@@ -1,7 +1,7 @@
 import {error} from "./print";
 import fetch, {Response} from 'node-fetch';
 
-async function handleErrors(apiResponse:any){
+export async function handleErrors(apiResponse:Response){
     if (apiResponse.ok && !apiResponse.redirected) return apiResponse;
     let responseBody = '(empty)';
     try {
