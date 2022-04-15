@@ -1,26 +1,25 @@
 import {error} from "./print";
 import fetch, {Response} from 'node-fetch';
 
-export async function handleErrors(apiResponse:Response){
-    if (apiResponse.ok && !apiResponse.redirected) return apiResponse;
-    let responseBody = '(empty)';
+const fail = (msg:string)=>{
+    error(msg);
+    throw Error(msg);
+}
+
+export async function handleErrors(apiResponse:Response):Promise<Response>{
+    let responseBody:any;
     try {
-        let response = JSON.parse(await apiResponse.text() as any);
-        if (response.message) responseBody = response.message;
+         responseBody = JSON.parse(await apiResponse.text() as any);
+    } catch (e){
+        return fail(`Cannot parse response body ${e}`)
+    }
+    if (apiResponse.redirected&&apiResponse.url.includes('login')) return fail(`Authentication error. Redirected to login`)
+    if (!apiResponse.ok) return fail(apiResponse.statusText);
+    if (responseBody.status==='ERROR') try {
+        return fail(responseBody.typeReports[0].objectReports[0].errorReports[0].message)
     } catch(e){
-        responseBody = 'ERROR: Cannot retrieve server response'
+        return fail(`Server response contains an error`)
     }
-    if (apiResponse.redirected&&apiResponse.url.includes('login')) {
-        error(`ERROR: Login failed`);
-        return apiResponse;
-    }
-    error(
-        `Server request failed`,
-        `Type:\t  ${apiResponse.url}`,
-        `URL:\t  ${apiResponse.url}`,
-        `Status:\t  ${apiResponse.status} (${apiResponse.statusText})`,
-        `Response: ${responseBody}`
-    );
     return apiResponse;
 }
 

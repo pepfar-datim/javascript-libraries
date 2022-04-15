@@ -19,9 +19,9 @@ export const exception = (message:string, ...details:any)=>{
 }
 
 export const error = (message:string, ...details:string[])=>{
-    console.log(red(message));
+    console.log(`ERROR: `+red(message));
     details.forEach((d)=>console.log(red(d)));
-    console.log('')
+    // console.log('')
 }
 
 export const success = (message:string)=>console.log(green(message));
