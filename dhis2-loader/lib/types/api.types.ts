@@ -15,3 +15,8 @@ export type ApiResponse = {
     errorMessage?:string,
     rawResponse:Response
 }
+
+export enum HttpMethod {
+    post='POST',
+    put='PUT'
+}

@@ -21,10 +21,11 @@ function getErrorMessage(errorType:ErrorType, responseBody?:any):string{
 class FailService {
     apiResponse:ApiResponse;
     responseBody:any;
-    constructor(apiResponse) {
+    constructor(apiResponse:ApiResponse) {
         this.apiResponse = apiResponse;
     }
     fail(errorType:ErrorType):ApiResponse{
+        this.apiResponse.errorType = errorType;
         this.apiResponse.errorMessage = getErrorMessage(errorType, this.responseBody)
         return this.apiResponse;
     }
@@ -56,13 +57,13 @@ export async function inspectResponse(rawResponse:Response):Promise<ApiResponse>
 
 
 
-export async function postJson(url:string,data:any,authorization:string):Promise<ApiResponse>{
+export async function sendJson(method:string, url:string, data:any, authorization:string):Promise<ApiResponse>{
     return fetch(url, {
         headers: {
             'Authorization': authorization,
             'Content-type': 'application/json'
         },
-        method: 'POST',
+        method: method,
         body: JSON.stringify(data)
     })
    .then(inspectResponse)

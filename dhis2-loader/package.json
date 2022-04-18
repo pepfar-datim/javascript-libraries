@@ -4,7 +4,8 @@
   "description": "Scripts to load data into DHIS2",
   "main": "index.ts",
   "scripts": {
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "example": "ts-node example/loadUser.testScript.ts"
   },
   "author": "Jakub Flaska",
   "license": "ISC",
