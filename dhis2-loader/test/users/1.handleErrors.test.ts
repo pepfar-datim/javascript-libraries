@@ -1,4 +1,5 @@
-import {handleErrors} from "../../lib/services/httpRequest.service";
+import {inspectResponse} from "../../lib/services/httpRequest.service";
+import {ApiResponse} from "../../lib/types/api.types";
 
 type MockedResponse = {
     ok:boolean,
@@ -53,10 +54,7 @@ const testCases:TestCase[] = [{
 
 testCases.forEach(({response,name,expectError}:TestCase)=>{
     test(`1 > Users > Handle Errors > ${name}`,async ()=> {
-        const execute = async ()=>await handleErrors(response as any);
-        if (expectError) await expect(execute)
-            .rejects
-            .toThrow();
-        else await expect(execute).not.toThrow()
+        let apiResponse:ApiResponse = await inspectResponse(response as any);
+        if (expectError) expect(apiResponse.success).toBeFalsy();
     });
 })
