@@ -1,4 +1,4 @@
-import {red,green} from 'colors/safe';
+import {green, red} from 'colors/safe';
 import {blue} from "colors";
 
 export const line = ()=>{
@@ -18,9 +18,14 @@ export const exception = (message:string, ...details:any)=>{
     throw new Error(red(message)+'\n\n');
 }
 
-export const error = (message:string, ...details:string[])=>{
-    console.log(`ERROR: `+red(message));
-    details.forEach((d)=>console.log(red(d)));
+// export const error = (message:string, ...details:string[])=>{
+//     console.log(`ERROR: `+red(message));
+//     details.forEach((d)=>console.log(red(d)));
+// }
+
+export const error = (message:string)=>{
+    console.log(`ERROR ${red(message)}`);
+    // console.log(message.map(red))
 }
 
 export const success = (message:string)=>console.log(green(message));

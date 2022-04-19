@@ -2,18 +2,19 @@ import {Response} from 'node-fetch';
 
 export enum ErrorType {
     cannotParse,
-    invalidAuthentication,
-    wrongPassword,
+    silentRedirect,
+    httpError,
     alreadyExists,
-    otherSpecified,
-    otherUnspecified
+    dhis2ErrorSpecified,
+    dhis2ErrorUnspecified
 }
 
 export type ApiResponse = {
     success:boolean,
     errorType?:ErrorType,
     errorMessage?:string,
-    rawResponse:Response
+    rawResponse:Response,
+    responseBody?: any
 }
 
 export enum HttpMethod {
