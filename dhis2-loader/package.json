@@ -1,11 +1,12 @@
 {
   "name": "@pepfar-react-lib/dhis2-loader",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Scripts to load data into DHIS2",
   "main": "index.ts",
   "scripts": {
     "test": "jest --watch",
-    "example": "ts-node example/loadUser.testScript.ts"
+    "example:users": "ts-node example/loadUser.ts",
+    "example:cors": "ts-node example/allowCors.ts"
   },
   "author": "Jakub Flaska",
   "license": "ISC",

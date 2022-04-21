@@ -1,5 +1,6 @@
 import fetch, {Response} from 'node-fetch';
 import {ApiResponse, ErrorType} from "../types/api.types";
+import {success} from "./print";
 
 function getErrorMessage(errorType:ErrorType, apiResponse:ApiResponse):string{
     switch (errorType){
@@ -25,8 +26,13 @@ class FailService {
         this.apiResponse = apiResponse;
     }
     fail(errorType:ErrorType):ApiResponse{
+        this.apiResponse.success = false;
         this.apiResponse.errorType = errorType;
         this.apiResponse.errorMessage = getErrorMessage(errorType, this.apiResponse)
+        return this.apiResponse;
+    }
+    success():ApiResponse{
+        this.apiResponse.success = true;
         return this.apiResponse;
     }
 }
@@ -39,6 +45,7 @@ export async function inspectResponse(rawResponse:Response):Promise<ApiResponse>
     let failService = new FailService(apiResponse);
     if (!rawResponse.ok) return failService.fail(ErrorType.httpError);
     if (rawResponse.redirected&&rawResponse.url.includes('login')) return failService.fail(ErrorType.silentRedirect)
+    if (rawResponse.status===204&&!rawResponse.redirected) return failService.success();
     try {
         let responseBody:any = JSON.parse(await rawResponse.text() as any);
         failService.apiResponse.responseBody = responseBody
@@ -51,8 +58,7 @@ export async function inspectResponse(rawResponse:Response):Promise<ApiResponse>
     } catch (e){
         return failService.fail(ErrorType.cannotParse);
     }
-    apiResponse.success = true;
-    return apiResponse;
+    return failService.success();
 }
 
 

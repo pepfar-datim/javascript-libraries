@@ -2,6 +2,7 @@ import {sendJson} from "./httpRequest.service";
 import {error, info, success} from "./print";
 import {User} from "../types/user.type";
 import {ApiResponse, ErrorType, HttpMethod} from "../types/api.types";
+import {assembleUrl} from "./assembleUrl.service";
 
 export enum Operation {
     create,
@@ -29,7 +30,7 @@ export async function createUpdateUser(operation:Operation, baseUrl:string, auth
     let {method, url, beforeMessage,afterMessage}:OperationMeta = getOperationMeta(operation,userObject);
     info(beforeMessage)
     userObject.userCredentials.password = 'Cypress1!'
-    let response:ApiResponse = await sendJson(method,`https://${baseUrl}/api${url}`, userObject, authorization);
+    let response:ApiResponse = await sendJson(method,assembleUrl(baseUrl,url), userObject, authorization);
     if (response.success) return success(`${afterMessage} Response: ${response.rawResponse.status} ${response.rawResponse.statusText}`)
     else error(response.errorMessage||'')
     if (response.errorType===ErrorType.alreadyExists&&operation===Operation.create) return createUpdateUser(Operation.update,baseUrl,authorization,userObject);
