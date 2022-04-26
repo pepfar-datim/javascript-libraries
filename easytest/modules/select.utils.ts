@@ -1,4 +1,6 @@
 import {fireEvent, getByText, screen, within} from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import {debug, pause } from "./basic.utils";
 
 
 /**
@@ -10,6 +12,7 @@ import {fireEvent, getByText, screen, within} from "@testing-library/react";
  * ```
  * @category Select
  * */
+
 export function select(id:string, value:string){
     fireEvent.mouseDown(screen.getByTestId(id).childNodes[0]);
     let modal = screen.getByRole('presentation');

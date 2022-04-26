@@ -24,6 +24,6 @@ export function pause(ms:number):Promise<void>{
  * ```
  * @category Render
  * */
-export let debug = ()=>{
-    screen.debug(null as any,10000000);
+export let debug = (elt?:Element)=>{
+    screen.debug(elt||null as any,10000000);
 }
