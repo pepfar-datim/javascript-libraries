@@ -1,0 +1,21 @@
+{
+  "name": "@pepfar-react-lib/datimuser",
+  "version": "0.0.1",
+  "description": "Service to determine DHIS2 user type from raw user object",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest --watch",
+    "typecheck": "tsc --noEmit index.ts"
+  },
+  "author": "Jakub Flaska",
+  "license": "ISC",
+  "private": false,
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
+    "ts-node": "^10.7.0"
+  },
+  "type": "module"
+}
