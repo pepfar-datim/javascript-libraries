@@ -1,8 +1,9 @@
-import {getJson} from "./services/get.service";
+import {getJson,getText} from "./services/get.service";
 import {register} from "./services/register.service";
 
 
-export const api = {
+export const datimApi = {
     getJson,
+    getText,
     register
 }

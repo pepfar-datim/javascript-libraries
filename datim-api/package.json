@@ -1,7 +1,7 @@
 {
-  "name": "@pepfar-react-lib/datimuser",
-  "version": "0.0.4",
-  "description": "Service to determine DHIS2 user type from raw user object",
+  "name": "@pepfar-react-lib/datim-api",
+  "version": "0.0.1",
+  "description": "JS wrapper around DATIM API",
   "main": "index.ts",
   "scripts": {
     "test": "jest --watch",
