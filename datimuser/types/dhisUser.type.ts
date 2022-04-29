@@ -4,6 +4,6 @@ export type DhisUser = {
     userGroups: idName[];
     userCredentials: {
         userRoles: idName[];
-        disabled: boolean;
+        disabled?: boolean;
     }
 }
