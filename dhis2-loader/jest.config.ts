@@ -191,4 +191,7 @@ export default {
 
   // Whether to use watchman for file crawling
   // watchman: true,
+    "transformIgnorePatterns": [
+        "node_modules/(?!@pepfar-react-lib)/"
+    ],
 };

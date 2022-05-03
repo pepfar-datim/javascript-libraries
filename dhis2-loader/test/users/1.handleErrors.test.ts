@@ -1,5 +1,4 @@
-import {inspectResponse} from "../../lib/services/httpRequest.service";
-import {ApiResponse} from "../../lib/types/api.types";
+import {ApiResponse, inspectResponse} from "@pepfar-react-lib/datim-api";
 
 type MockedResponse = {
     ok:boolean,

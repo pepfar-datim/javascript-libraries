@@ -1,7 +1,5 @@
 import fetch, {Response} from 'node-fetch';
-import {ApiResponse, ErrorType} from "../types/api.types";
-import {success} from "./print";
-import {inspectResponse} from "./inspectResponse.service";
+import {inspectResponse,ApiResponse} from "@pepfar-react-lib/datim-api";
 
 export async function sendJson(method:string, url:string, data:any, authorization:string):Promise<ApiResponse>{
     return fetch(url, {

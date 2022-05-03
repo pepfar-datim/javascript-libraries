@@ -3,6 +3,8 @@ import {registerProd, registerTest, setTestUsername} from "./services/config.ser
 import {registerGetMock} from "./services/mock/getMock.serivce";
 import {initTestCache} from "./services/cache/getCache.service";
 import {postJson, postText, putJson, postEmpty} from "./services/methods/sendData.service";
+export * from "./services/methods/inspectResponse.service";
+export * from "./types/http.types";
 
 export default {
     getJson,
