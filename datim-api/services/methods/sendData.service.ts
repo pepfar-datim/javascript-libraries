@@ -1,5 +1,6 @@
 import {ContentType, HttpMethod} from "../../types/http.types";
 import {getFullUrl} from "../config.service";
+import {inspectResponse} from "@pepfar-react-lib/dhis2-loader";
 
 export function postJson(url:string,body:any){
     return sendData(HttpMethod.post, url,ContentType.json, body);
@@ -17,7 +18,7 @@ export function postEmpty(url:string){
     return sendData(HttpMethod.post, url,null, ContentType.text);
 }
 
-function sendData(method:HttpMethod,endpoint:string,contentType:ContentType,payload:any):Promise<Response>{
+function sendData(method:HttpMethod,endpoint:string,contentType:ContentType,payload:any):Promise<ApiResponse>{
     return fetch(getFullUrl(endpoint),{
         method,
         credentials:'include',
@@ -25,5 +26,7 @@ function sendData(method:HttpMethod,endpoint:string,contentType:ContentType,payl
             'Content-Type':contentType
         },
         body: contentType===ContentType.json?JSON.stringify(payload):payload
-    }).then(inspectResponse)
+    }).then(inspectResponse).then((apiResponse)=>{
+
+    })
 }
