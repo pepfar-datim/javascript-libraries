@@ -6,7 +6,8 @@
     "noImplicitAny": false,
     "baseUrl": "./",
     "rootDir": "./",
-    "lib": ["ESNext","dom"]
+    "lib": ["ESNext","dom"],
+    "moduleResolution": "Node"
   },
   "exclude": [
     "node_modules"

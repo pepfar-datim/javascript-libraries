@@ -20,6 +20,12 @@
   },
   "type": "module",
   "jest": {
-    "transformIgnorePatterns": ["node_modules/(?!node-fetch)/"]
+    "transformIgnorePatterns": [
+      "node_modules/(?!node-fetch)/"
+    ],
+    "watchPathIgnorePatterns": ["<rootDir>/cachedApiCalls/"]
+  },
+  "dependencies": {
+    "md5": "^2.3.0"
   }
 }
