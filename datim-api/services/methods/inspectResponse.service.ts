@@ -1,5 +1,4 @@
-import {ApiResponse, ErrorType} from "../types/api.types";
-import {Response} from "node-fetch";
+import {ApiResponse, ErrorType} from "../../types/http.types";
 
 function getErrorMessage(errorType:ErrorType, apiResponse:ApiResponse):string{
     switch (errorType){

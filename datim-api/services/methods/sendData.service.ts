@@ -1,6 +1,6 @@
-import {ContentType, HttpMethod} from "../../types/http.types";
+import {ApiResponse, ContentType, HttpMethod} from "../../types/http.types";
 import {getFullUrl} from "../config.service";
-import {inspectResponse} from "@pepfar-react-lib/dhis2-loader";
+import {inspectResponse} from "./inspectResponse.service";
 
 export function postJson(url:string,body:any){
     return sendData(HttpMethod.post, url,ContentType.json, body);
@@ -26,7 +26,8 @@ function sendData(method:HttpMethod,endpoint:string,contentType:ContentType,payl
             'Content-Type':contentType
         },
         body: contentType===ContentType.json?JSON.stringify(payload):payload
-    }).then(inspectResponse).then((apiResponse)=>{
-
+    }).then(inspectResponse).then((apiResponse:ApiResponse)=>{
+        if (!apiResponse.success) throw new Error(apiResponse.errorMessage);
+        else return apiResponse;
     })
 }
