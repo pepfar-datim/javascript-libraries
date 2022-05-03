@@ -1,6 +1,7 @@
-import {datimApi} from "../index";
+import datimApi from "../index";
 import {testCredentials} from "./testCredentials.const";
 import fetch from "node-fetch"
+// @ts-ignore
 global.fetch = fetch
 
 test(`1 > getJson`,async ()=>{

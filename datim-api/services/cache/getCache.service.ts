@@ -39,7 +39,7 @@ function getCachedResponse(username:string, url:string):object{
     return {json:()=>data};
 }
 
-export const getCache = {
+export {
     initTestCache,
     saveResponseToCache,
     isResponseCached,

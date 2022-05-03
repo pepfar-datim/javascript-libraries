@@ -1,4 +1,4 @@
-import {datimApi} from "../index";
+import datimApi from "../index";
 import {testCredentials} from "./testCredentials.const";
 
 test(`3 > get cache`,async ()=>{

@@ -1,15 +1,19 @@
-import {getJson,getText} from "./services/get.service";
+import {getJson,getText} from "./services/methods/get.service";
 import {registerProd, registerTest, setTestUsername} from "./services/config.service";
-import {mock} from "./services/mock/mock.service";
-import {getCache} from "./services/cache/cache.get.service";
+import {registerGetMock} from "./services/mock/getMock.serivce";
+import {initTestCache} from "./services/cache/getCache.service";
+import {postJson, postText, putJson, postEmpty} from "./services/methods/sendData.service";
 
-
-export const datimApi = {
+export default {
     getJson,
     getText,
+    postJson,
+    putJson,
+    postText,
+    postEmpty,
     registerProd,
     registerTest,
-    mock,
-    initTestCache:getCache.initTestCache,
+    registerGetMock,
+    initTestCache,
     setTestUsername,
 }
