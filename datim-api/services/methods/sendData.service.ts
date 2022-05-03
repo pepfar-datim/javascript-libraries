@@ -15,7 +15,7 @@ export function postText(url:string,body:any){
 }
 
 export function postEmpty(url:string){
-    return sendData(HttpMethod.post, url,null, ContentType.text);
+    return sendData(HttpMethod.post, url,ContentType.text,null);
 }
 
 function sendData(method:HttpMethod,endpoint:string,contentType:ContentType,payload:any):Promise<ApiResponse>{
