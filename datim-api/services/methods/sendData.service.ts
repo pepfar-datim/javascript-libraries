@@ -25,5 +25,5 @@ function sendData(method:HttpMethod,endpoint:string,contentType:ContentType,payl
             'Content-Type':contentType
         },
         body: contentType===ContentType.json?JSON.stringify(payload):payload
-    })
+    }).then(inspectResponse)
 }

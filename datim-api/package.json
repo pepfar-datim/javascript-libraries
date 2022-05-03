@@ -1,6 +1,6 @@
 {
   "name": "@pepfar-react-lib/datim-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JS wrapper around DATIM API",
   "main": "index.ts",
   "scripts": {
@@ -23,9 +23,12 @@
     "transformIgnorePatterns": [
       "node_modules/(?!node-fetch)/"
     ],
-    "watchPathIgnorePatterns": ["<rootDir>/cachedApiCalls/"]
+    "watchPathIgnorePatterns": [
+      "<rootDir>/cachedApiCalls/"
+    ]
   },
   "dependencies": {
+    "@pepfar-react-lib/dhis2-loader": "^0.0.5",
     "md5": "^2.3.0"
   }
 }
