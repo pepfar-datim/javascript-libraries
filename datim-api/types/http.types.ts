@@ -1,7 +1,8 @@
 export enum HttpMethod {
     post='POST',
     get='GET',
-    put='PUT'
+    put='PUT',
+    patch='PATCH'
 }
 
 export enum ContentType {

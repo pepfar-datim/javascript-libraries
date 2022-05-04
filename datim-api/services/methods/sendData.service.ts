@@ -12,6 +12,10 @@ export function putJson(url:string,body:any){
     return sendData(HttpMethod.put, url,ContentType.json, body);
 }
 
+export function patchJson(url:string,body:any){
+    return sendData(HttpMethod.patch, url,ContentType.json, body);
+}
+
 export function postText(url:string,body:any){
     return sendData(HttpMethod.post, url,ContentType.text, body);
 }
