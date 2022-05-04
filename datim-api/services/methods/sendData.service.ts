@@ -1,6 +1,8 @@
 import {ApiResponse, ContentType, HttpMethod} from "../../types/http.types";
 import {getFullUrl} from "../config.service";
 import {inspectResponse} from "./inspectResponse.service";
+import {isTestEnv} from "../isTestEnv.service";
+import {mockSendingData} from "../mock/sendMock.service";
 
 export function postJson(url:string,body:any){
     return sendData(HttpMethod.post, url,ContentType.json, body);
@@ -19,6 +21,7 @@ export function postEmpty(url:string){
 }
 
 function sendData(method:HttpMethod,endpoint:string,contentType:ContentType,payload:any):Promise<ApiResponse>{
+    if (isTestEnv()) return mockSendingData(endpoint,payload);
     return fetch(getFullUrl(endpoint),{
         method,
         credentials:'include',
