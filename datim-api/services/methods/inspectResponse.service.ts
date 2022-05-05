@@ -46,7 +46,7 @@ export async function inspectResponse(rawResponse:Response|any):Promise<ApiRespo
     if (rawResponse.status===204&&!rawResponse.redirected) return failService.success();
     try {
         let responseBody:any = JSON.parse(await rawResponse.text() as any);
-        failService.apiResponse.responseBody = responseBody
+        failService.apiResponse.responseBody = responseBody;
         if (responseBody.status==='ERROR') try {
             if (responseBody.typeReports[0].objectReports[0].errorReports[0].message.includes('matching')) return failService.fail(ErrorType.alreadyExists)
             else return failService.fail(ErrorType.dhis2ErrorSpecified)
