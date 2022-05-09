@@ -24,3 +24,7 @@ export function setTestUsername(username:string,auth:string){
     config.testUsername = username;
     config.authorization = auth;
 }
+
+export function getAuthorization():string{
+    return config.authorization;
+}

@@ -1,4 +1,4 @@
-import {config, getFullUrl} from "../config.service";
+import {config, getAuthorization, getFullUrl} from "../config.service";
 import {getMockedResponse, isGetMocked} from "../mock/getMock.serivce";
 import {isTestEnv} from "../isTestEnv.service";
 import {getCachedResponse, isResponseCached, saveResponseToCache} from "../cache/getCache.service";
@@ -22,6 +22,6 @@ export function getText(endpointUrl:string, options?:RequestInit):Promise<any>{
 function getData(endpointUrl, options?:RequestInit):Promise<any>{
     if (isTestEnv()&&isGetMocked(endpointUrl)) return Promise.resolve(getMockedResponse(endpointUrl));
     if (isTestEnv()&&isResponseCached(config.testUsername,endpointUrl)) return Promise.resolve(getCachedResponse(config.testUsername,endpointUrl))
-    if (config.authorization) options.headers['authorization'] = config.authorization;
+    if (isTestEnv()) options.headers['authorization'] = getAuthorization();
     return fetch(getFullUrl(endpointUrl),{credentials: 'include', ...options})
 }
