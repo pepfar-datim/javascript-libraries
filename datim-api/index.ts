@@ -4,6 +4,7 @@ import {registerGetMock} from "./services/mock/getMock.serivce";
 import {initTestCache} from "./services/cache/getCache.service";
 import {postJson, postText, putJson, postEmpty, patchJson} from "./services/methods/sendData.service";
 import {registerSendMock} from "./services/mock/sendMock.service";
+import {getBaseUrl} from "./services/getBaseUrl.service";
 export * from "./services/methods/inspectResponse.service";
 export * from "./types/http.types";
 export * from "./services/isTestEnv.service"
@@ -22,5 +23,6 @@ export default {
     registerSendMock,
     initTestCache,
     setTestUsername,
-    getFullUrl
+    getFullUrl,
+    getBaseUrl
 }
