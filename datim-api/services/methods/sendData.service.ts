@@ -1,8 +1,7 @@
 import {ApiResponse, ContentType, HttpMethod} from "../../types/http.types";
-import {getFullUrl} from "../config.service";
 import {inspectResponse} from "./inspectResponse.service";
-import {isTestEnv} from "../isTestEnv.service";
 import {mockSendingData} from "../mock/sendMock.service";
+import {getFullUrl, isTestEnv} from "../config.service";
 
 export function postJson(url:string,body:any){
     return sendData(HttpMethod.post, url,ContentType.json, body);

@@ -1,6 +1,5 @@
-import {config, getAuthorization, getFullUrl} from "../config.service";
+import {config, getAuthorization, getFullUrl, isTestEnv} from "../config.service";
 import {getMockedResponse, isGetMocked} from "../mock/getMock.serivce";
-import {isTestEnv} from "../isTestEnv.service";
 import {getCachedResponse, isResponseCached, saveResponseToCache} from "../cache/getCache.service";
 import {ContentType} from "../../types/http.types";
 

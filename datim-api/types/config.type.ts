@@ -1,10 +1,11 @@
 export enum Environment {
     test='test',
-    prod='prod'
+    production='production',
+    development='development'
 }
 export type Config = {
+    environment: Environment,
     baseUrl:string,
     testUsername:string,
     authorization:string,
-    environment:Environment
 }

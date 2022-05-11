@@ -1,4 +1,4 @@
-import {isTestEnv, isTestEnv_lowLevel} from "../isTestEnv.service";
+import {isTestEnv} from "../detectEnv.service";
 import {urlToFilename} from "./urlToFilename.service";
 
 let cachedResponseList:string[] = [];
