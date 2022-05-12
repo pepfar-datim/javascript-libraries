@@ -1,5 +1,5 @@
-import {isTestEnv} from "../detectEnv.service";
 import {urlToFilename} from "./urlToFilename.service";
+import {isTestEnv} from "../config.service";
 
 let cachedResponseList:string[] = [];
 let fs;

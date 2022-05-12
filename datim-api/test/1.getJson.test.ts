@@ -1,11 +1,13 @@
 import datimApi from "../index";
 import {testCredentials} from "./testCredentials.const";
 import fetch from "node-fetch"
+import {Environment} from "../types/config.type";
 // @ts-ignore
 global.fetch = fetch
 
 test(`1 > getJson`,async ()=>{
-    datimApi.registerTest(testCredentials.url,testCredentials.username,testCredentials.auth);
+    datimApi.register(Environment.test, testCredentials.url);
+    datimApi.setTestUsername(testCredentials.username,testCredentials.auth);
     let response:{id:string} = await datimApi.getJson(`/me`);
     expect(response.id.length).toBe(11);
 })

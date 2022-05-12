@@ -22,5 +22,6 @@ function getData(endpointUrl, options?:RequestInit):Promise<any>{
     if (isTestEnv()&&isGetMocked(endpointUrl)) return Promise.resolve(getMockedResponse(endpointUrl));
     if (isTestEnv()&&isResponseCached(config.testUsername,endpointUrl)) return Promise.resolve(getCachedResponse(config.testUsername,endpointUrl))
     if (isTestEnv()) options.headers['authorization'] = getAuthorization();
+    if (isTestEnv()) console.log(`Request not cached ${endpointUrl}`)
     return fetch(getFullUrl(endpointUrl),{credentials: 'include', ...options})
 }

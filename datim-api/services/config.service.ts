@@ -12,7 +12,6 @@ export function register(environment:string,baseUrl?:string){
     config.environment = environment as Environment;
     if (config.environment===Environment.production) config.baseUrl = `../../../`;
     else config.baseUrl = baseUrl;
-    console.log(`Configuration`,config)
 }
 
 export function setTestUsername(testUsername:string,authorization:string){
