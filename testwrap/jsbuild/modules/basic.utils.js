@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.debug = exports.pause = void 0;
-var react_1 = require("@testing-library/react");
+const react_1 = require("@testing-library/react");
 /**
  * Pause test execution by `sec` seconds
  *
@@ -12,7 +12,7 @@ var react_1 = require("@testing-library/react");
  * @category Pause
  * */
 function pause(ms) {
-    return new Promise(function (done) {
+    return new Promise((done) => {
         setTimeout(done, ms);
     });
 }
@@ -26,7 +26,7 @@ exports.pause = pause;
  * ```
  * @category Render
  * */
-var debug = function (elt) {
+let debug = (elt) => {
     react_1.screen.debug(elt || null, 10000000);
 };
 exports.debug = debug;

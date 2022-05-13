@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.noTextsIn = exports.textsIn = exports.noTextIn = exports.textIn = void 0;
-var react_1 = require("@testing-library/react");
+const react_1 = require("@testing-library/react");
 /**
  * Check if `text` is present inside of element found by `id`
  *
@@ -37,7 +37,7 @@ exports.noTextIn = noTextIn;
  * ```
  * @category Text inside element
  * */
-var textsIn = function (id, texts) { return texts.forEach(function (t) { return textIn(id, t); }); };
+const textsIn = (id, texts) => texts.forEach((t) => textIn(id, t));
 exports.textsIn = textsIn;
 /**
  * Check that none of the `texts` are inside the element found by `id`
@@ -48,6 +48,6 @@ exports.textsIn = textsIn;
  * ```
  * @category Text inside element
  * */
-var noTextsIn = function (id, texts) { return texts.forEach(function (t) { return noTextIn(id, t); }); };
+const noTextsIn = (id, texts) => texts.forEach((t) => noTextIn(id, t));
 exports.noTextsIn = noTextsIn;
 //# sourceMappingURL=textIn.utils.js.map

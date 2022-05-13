@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es5",
+    "target": "esnext",
     "sourceMap": true,
     "esModuleInterop": true, // enable default import of react
-    "jsx": "react" // enable jsx syntax
+    "jsx": "react", // enable jsx syntax
+    "moduleResolution": "Node",
+    "declaration": true
   },
   "exclude": [
     "node_modules"

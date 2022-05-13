@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.clickByCss = exports.clickByText = exports.click = void 0;
-var react_1 = require("@testing-library/react");
+const react_1 = require("@testing-library/react");
 /**
  * Click element found by `id`
  *
@@ -38,9 +38,9 @@ exports.clickByText = clickByText;
  * @category Click
  * */
 function clickByCss(css) {
-    var element = document.querySelector(css);
+    let element = document.querySelector(css);
     if (!element) {
-        throw new Error("Cannot find element by css selector: '".concat(css, "'"));
+        throw new Error(`Cannot find element by css selector: '${css}'`);
     }
     react_1.fireEvent.click(element);
 }

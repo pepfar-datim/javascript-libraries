@@ -13,13 +13,13 @@ function disableWindowLocation() {
         pathname: "",
         port: "",
         protocol: "",
-        replace: function (url) {
+        replace(url) {
         },
         search: "",
-        toString: function () {
+        toString() {
             return "";
         },
-        reload: function (forcedReload) {
+        reload(forcedReload) {
         },
         assign: jest.fn()
     };

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --watch",
     "typecheck": "tsc --noEmit index.ts",
-    "dep:copy": "sh node_modules/@pepfar-react-lib/dep-copy/bin/dep-copy.sh"
+    "dep:copy": "sh node_modules/@pepfar-react-lib/dep-copy/bin/dep-copy.sh",
+    "build:js": "tsc --outDir jsbuild"
   },
   "author": "Jakub Flaska",
   "license": "ISC",
@@ -30,6 +31,7 @@
     ]
   },
   "dependencies": {
-    "md5": "^2.3.0"
+    "md5": "^2.3.0",
+    "node-fetch": "^3.2.4"
   }
 }

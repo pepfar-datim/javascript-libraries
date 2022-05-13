@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.checkSelectValue = exports.selectById = exports.select = void 0;
-var react_1 = require("@testing-library/react");
+const react_1 = require("@testing-library/react");
 /**
  * Select `value` in select element found by `id`
  *
@@ -13,7 +13,7 @@ var react_1 = require("@testing-library/react");
  * */
 function select(id, value) {
     react_1.fireEvent.mouseDown(react_1.screen.getByTestId(id).childNodes[0]);
-    var modal = react_1.screen.getByRole('presentation');
+    let modal = react_1.screen.getByRole('presentation');
     react_1.fireEvent.click((0, react_1.within)(modal).getByText(value));
     checkSelectValue(id, value);
 }

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCheckboxValue = exports.checkCheckbox = void 0;
-var react_1 = require("@testing-library/react");
+const react_1 = require("@testing-library/react");
 /**
  * Check that checkbox found by `id` is `checked` (or unchecked for `false`)
  *
