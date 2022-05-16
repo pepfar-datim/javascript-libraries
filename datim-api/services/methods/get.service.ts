@@ -6,9 +6,9 @@ import {ContentType} from "../../types/http.types";
 const mergeOptions = (options:RequestInit,acceptType:string)=>Object.assign({headers:{Accept: acceptType}},options);
 
 export async function getJson(endpointUrl:string,options?:RequestInit):Promise<any>{
-    let response = await getData(endpointUrl,mergeOptions(options,ContentType.json)).then(r=>r.json()).catch(e=>{
-        console.error(`Request failed`,endpointUrl,options);
-        throw e;
+    let response = await getData(endpointUrl,mergeOptions(options,ContentType.json)).then(r=>r.json()).catch(error=>{
+        console.error(`Request failed`,endpointUrl,error);
+        throw error;
     });
     if (isTestEnv()&&!isGetMocked(endpointUrl)) saveResponseToCache(config.testUsername,endpointUrl,response);
     return response;
