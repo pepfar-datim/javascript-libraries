@@ -1,7 +1,8 @@
 import {sendJson} from "./httpRequest.service";
 import {error, info, success} from "./print";
 import {User} from "../types/user.type";
-import {ApiResponse, ErrorType, HttpMethod} from "../types/api.types";
+import {ApiResponse} from "@pepfar-react-lib/datim-api";
+import {HttpMethod,ErrorType} from "@pepfar-react-lib/datim-api/jsbuild";
 import {assembleUrl} from "./assembleUrl.service";
 
 export enum Operation {

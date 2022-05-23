@@ -1,6 +1,6 @@
 {
   "name": "@pepfar-react-lib/datim-api",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "JS wrapper around DATIM API",
   "main": "index.ts",
   "scripts": {
@@ -8,6 +8,14 @@
     "typecheck": "tsc --noEmit index.ts",
     "dep:copy": "sh node_modules/@pepfar-react-lib/dep-copy/bin/dep-copy.sh",
     "build:js": "tsc --outDir jsbuild"
+  },
+  "exports": {
+    ".": {
+      "import": "./index.ts"
+    },
+    "./jsbuild": {
+      "import": "./jsbuild/index.js"
+    }
   },
   "author": "Jakub Flaska",
   "license": "ISC",

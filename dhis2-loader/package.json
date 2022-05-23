@@ -7,7 +7,16 @@
     "test": "jest --watch",
     "example:users": "ts-node example/loadUser.ts",
     "example:cors": "ts-node example/allowCors.ts",
-    "dep:copy": "sh node_modules/@pepfar-react-lib/dep-copy/bin/dep-copy.sh"
+    "dep:copy": "sh node_modules/@pepfar-react-lib/dep-copy/bin/dep-copy.sh",
+    "build:js": "rm -rf jsbuild/* && tsc --outDir jsbuild"
+  },
+  "exports": {
+    ".": {
+      "import": "./index.ts"
+    },
+    "./jsbuild": {
+      "import": "./jsbuild/index.js"
+    }
   },
   "author": "Jakub Flaska",
   "license": "ISC",
@@ -24,9 +33,10 @@
   },
   "dependencies": {
     "@pepfar-react-lib/datim-api": "^0.0.3",
+    "chalk": "^5.0.1",
     "colors": "^1.4.0",
     "node-fetch": "^2.6.7",
     "ts-node": "^10.7.0"
   },
-  "type": "commonjs"
+  "type": "module"
 }

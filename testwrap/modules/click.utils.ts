@@ -42,3 +42,7 @@ export function clickByCss(css:string){
     }
     fireEvent.click(element);
 }
+
+export function clickByRole(role:string){
+    fireEvent.click(screen.getByRole(role));
+}
