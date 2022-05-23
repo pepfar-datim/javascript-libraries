@@ -1,6 +1,6 @@
 {
   "name": "@pepfar-react-lib/datim-api",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "JS wrapper around DATIM API",
   "main": "index.ts",
   "scripts": {
