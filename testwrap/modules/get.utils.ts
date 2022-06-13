@@ -19,3 +19,11 @@ export function checkAttribute(element:Element, attr:string, value:string):void{
 export async function waitForElement(testId:string,timeout?:number):Promise<Element>{
     return await waitFor<Element>(() => screen.getByTestId(testId),{timeout: timeout||5000});
 }
+
+export function notToExist(id:string){
+    expect(screen.queryByTestId(id)).not.toBeInTheDocument()
+}
+
+export function notToExistList(ids:string[]){
+    ids.map(notToExist)
+}
