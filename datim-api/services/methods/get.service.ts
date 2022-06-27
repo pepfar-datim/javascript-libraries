@@ -18,6 +18,10 @@ export function getText(endpointUrl:string, options?:RequestInit):Promise<any>{
     return getData(endpointUrl,mergeOptions(options,ContentType.text)).then(r=>r.text());
 }
 
+export function getBlob(endpointUrl:string):Promise<Blob>{
+    return getData(endpointUrl).then(r=>r.blob())
+}
+
 function getData(endpointUrl, options?:RequestInit):Promise<any>{
     if (isTestEnv()&&isGetMocked(endpointUrl)) return Promise.resolve(getMockedResponse(endpointUrl));
     if (isTestEnv()&&isResponseCached(config.testUsername,endpointUrl)) return Promise.resolve(getCachedResponse(config.testUsername,endpointUrl))

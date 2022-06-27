@@ -1,4 +1,4 @@
-import {getJson,getText} from "./services/methods/get.service";
+import {getJson,getText, getBlob} from "./services/methods/get.service";
 import {getBaseUrl, register, setTestUsername} from "./services/config.service";
 import {registerGetMock} from "./services/mock/getMock.serivce";
 import {initTestCache} from "./services/cache/getCache.service";
@@ -10,6 +10,7 @@ export * from "./types/http.types";
 export default {
     getJson,
     getText,
+    getBlob,
     postJson,
     putJson,
     patchJson,
