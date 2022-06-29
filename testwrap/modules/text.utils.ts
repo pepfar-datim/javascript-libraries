@@ -1,4 +1,4 @@
-import {screen} from "@testing-library/react";
+import {screen, waitFor} from "@testing-library/react";
 
 /**
  * Check if `text` is present in DOM **right now**
@@ -81,4 +81,10 @@ export async function textsWait(textsToFind:string[],timeOut?:number):Promise<an
 
 function escapeRegExp(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
+
+export async function noTextWait(text:string):Promise<any> {
+    return waitFor(() => {
+        expect(screen.queryByText(text)).not.toBeInTheDocument()
+    })
 }
