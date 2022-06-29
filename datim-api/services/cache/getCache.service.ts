@@ -1,18 +1,16 @@
 import {urlToFilename} from "./urlToFilename.service";
-import {isTestEnv} from "../config.service";
 
 let cachedResponseList:string[] = [];
 let fs;
 let cacheDir;
 
 if (typeof process!=='undefined'&&process.env.NODE_ENV==='test') {
-    import('fs').then(i=>fs=i);
+    import('fs').then(initTestCache);
     cacheDir = process.cwd() + '/cachedApiCalls'
 }
 
-function initTestCache(){
-    if (!isTestEnv()||cachedResponseList.length>0) return;
-    if (!fs) throw new Error(`fs not imported`);
+function initTestCache(lib){
+    fs=lib;
     if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir);
     cachedResponseList = fs.readdirSync(`${cacheDir}/`).map(fileName => fileName.replace('.json', ''));
 }

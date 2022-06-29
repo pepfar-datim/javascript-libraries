@@ -6,20 +6,20 @@ import { postJson, postText, putJson, postEmpty, patchJson } from "./services/me
 import { registerSendMock } from "./services/mock/sendMock.service";
 export * from "./services/methods/inspectResponse.service";
 export * from "./types/http.types";
-export default {
-    getJson,
-    getText,
-    getBlob,
-    postJson,
-    putJson,
-    patchJson,
-    postText,
-    postEmpty,
-    registerGetMock,
-    registerSendMock,
-    initTestCache,
-    setTestUsername,
-    register,
-    getBaseUrl
+declare const _default: {
+    getJson: typeof getJson;
+    getText: typeof getText;
+    getBlob: typeof getBlob;
+    postJson: typeof postJson;
+    putJson: typeof putJson;
+    patchJson: typeof patchJson;
+    postText: typeof postText;
+    postEmpty: typeof postEmpty;
+    registerGetMock: typeof registerGetMock;
+    registerSendMock: typeof registerSendMock;
+    initTestCache: typeof initTestCache;
+    setTestUsername: typeof setTestUsername;
+    register: typeof register;
+    getBaseUrl: typeof getBaseUrl;
 };
-//# sourceMappingURL=index.js.map
+export default _default;

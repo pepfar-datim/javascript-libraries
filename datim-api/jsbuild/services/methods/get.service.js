@@ -15,6 +15,9 @@ export async function getJson(endpointUrl, options) {
 export function getText(endpointUrl, options) {
     return getData(endpointUrl, mergeOptions(options, ContentType.text)).then(r => r.text());
 }
+export function getBlob(endpointUrl) {
+    return getData(endpointUrl).then(r => r.blob());
+}
 function getData(endpointUrl, options) {
     if (isTestEnv() && isGetMocked(endpointUrl))
         return Promise.resolve(getMockedResponse(endpointUrl));
