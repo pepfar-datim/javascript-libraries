@@ -7,15 +7,18 @@
     "test": "jest --watch",
     "typecheck": "tsc --noEmit index.ts",
     "dep:copy": "sh node_modules/@pepfar-react-lib/dep-copy/bin/dep-copy.sh",
-    "build:js": "tsc --outDir jsbuild"
+    "build:es6js": "tsc --outDir build/es6js --module esnext",
+    "build:commonjs": "tsc --outDir build/commonjs --module commonjs",
+    "build": "rm -rf build && npm run build:es6js && npm run build:commonjs"
   },
   "exports": {
     ".": {
       "import": "./index.ts"
     },
-    "./jsbuild": {
-      "import": "./jsbuild/index.js"
-    }
+    "./build/es6js": {
+      "import": "./build/es6js/index.js"
+    },
+    "./build/commonjs": "./build/commonjs/index.js"
   },
   "author": "Jakub Flaska",
   "license": "ISC",

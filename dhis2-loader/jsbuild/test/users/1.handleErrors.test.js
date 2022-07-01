@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,7 +35,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { inspectResponse } from "@pepfar-react-lib/datim-api";
+exports.__esModule = true;
+var datim_api_1 = require("@pepfar-react-lib/datim-api");
 var testCases = [{
         name: 'correct login => status 200 & no redirect',
         response: {
@@ -76,7 +78,7 @@ testCases.forEach(function (_a) {
         var apiResponse;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, inspectResponse(response)];
+                case 0: return [4 /*yield*/, (0, datim_api_1.inspectResponse)(response)];
                 case 1:
                     apiResponse = _a.sent();
                     if (expectError)

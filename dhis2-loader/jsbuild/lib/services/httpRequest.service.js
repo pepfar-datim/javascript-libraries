@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,12 +35,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import fetch from 'node-fetch';
-import { inspectResponse } from "@pepfar-react-lib/datim-api/jsbuild";
-export function sendJson(method, url, data, authorization) {
+exports.__esModule = true;
+exports.sendJson = void 0;
+var node_fetch_1 = require("node-fetch");
+var commonjs_1 = require("@pepfar-react-lib/datim-api/build/commonjs");
+function sendJson(method, url, data, authorization) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            return [2 /*return*/, fetch(url, {
+            return [2 /*return*/, (0, node_fetch_1["default"])(url, {
                     headers: {
                         'Authorization': authorization,
                         'Content-type': 'application/json'
@@ -47,8 +50,9 @@ export function sendJson(method, url, data, authorization) {
                     method: method,
                     body: JSON.stringify(data)
                 })
-                    .then(inspectResponse)];
+                    .then(commonjs_1.inspectResponse)];
         });
     });
 }
+exports.sendJson = sendJson;
 //# sourceMappingURL=httpRequest.service.js.map

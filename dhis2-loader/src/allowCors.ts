@@ -2,7 +2,7 @@ import {sendJson} from "../lib/services/httpRequest.service";
 import {assembleUrl} from "../lib/services/assembleUrl.service";
 import {error, success} from "../lib/services/print";
 import {ApiResponse} from "@pepfar-react-lib/datim-api";
-import {HttpMethod} from "@pepfar-react-lib/datim-api/jsbuild";
+import {HttpMethod} from "@pepfar-react-lib/datim-api/build/commonjs";
 
 let corsToEnable = ['http://localhost','http://localhost:3000'];
 

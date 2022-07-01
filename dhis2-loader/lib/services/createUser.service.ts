@@ -2,7 +2,7 @@ import {sendJson} from "./httpRequest.service";
 import {error, info, success} from "./print";
 import {User} from "../types/user.type";
 import {ApiResponse} from "@pepfar-react-lib/datim-api";
-import {HttpMethod,ErrorType} from "@pepfar-react-lib/datim-api/jsbuild";
+import {HttpMethod,ErrorType} from "@pepfar-react-lib/datim-api/build/commonjs";
 import {assembleUrl} from "./assembleUrl.service";
 
 export enum Operation {
@@ -30,7 +30,7 @@ function getOperationMeta(operation:Operation, userObject:User):OperationMeta{
 export async function createUpdateUser(operation:Operation, baseUrl:string, authorization: string, userObject:User):Promise<void>{
     let {method, url, beforeMessage,afterMessage}:OperationMeta = getOperationMeta(operation,userObject);
     info(beforeMessage)
-    userObject.userCredentials.password = 'Cypress1!'
+    // userObject.userCredentials.password = 'Cypress1!'
     let response:ApiResponse = await sendJson(method,assembleUrl(baseUrl,url), userObject, authorization);
     if (response.success) return success(`${afterMessage} Response: ${response.rawResponse.status} ${response.rawResponse.statusText}`)
     else error(response.errorMessage||'')

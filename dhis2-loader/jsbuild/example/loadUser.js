@@ -1,4 +1,6 @@
-import { loadUsers } from "../src/loadUsers";
+"use strict";
+exports.__esModule = true;
+var loadUsers_1 = require("../src/loadUsers");
 var globalUser = {
     "lastUpdated": "2021-02-11T17:33:31.149",
     "id": "LAFGNeyxKHg",
@@ -48,5 +50,5 @@ var globalUser = {
         }, { "name": "Data ESOP entry", "id": "U8hyQR40auy" }, { "name": "Data ESOP access", "id": "TRBfaInIiOK" }],
     "userAccesses": []
 };
-loadUsers([globalUser], 'jakub.datim.org', 'Basic amZsYXNrYTpHcmVlbjE4IQ==');
+(0, loadUsers_1.loadUsers)([globalUser], 'jakub.datim.org', 'Basic amZsYXNrYTpHcmVlbjE4IQ==');
 //# sourceMappingURL=loadUser.js.map

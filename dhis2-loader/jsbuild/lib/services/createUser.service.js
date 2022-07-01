@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,45 +35,47 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { sendJson } from "./httpRequest.service";
-import { error, info, success } from "./print";
-import { HttpMethod, ErrorType } from "@pepfar-react-lib/datim-api/jsbuild";
-import { assembleUrl } from "./assembleUrl.service";
-export var Operation;
+exports.__esModule = true;
+exports.createUpdateUser = exports.Operation = void 0;
+var httpRequest_service_1 = require("./httpRequest.service");
+var print_1 = require("./print");
+var commonjs_1 = require("@pepfar-react-lib/datim-api/build/commonjs");
+var assembleUrl_service_1 = require("./assembleUrl.service");
+var Operation;
 (function (Operation) {
     Operation[Operation["create"] = 0] = "create";
     Operation[Operation["update"] = 1] = "update";
-})(Operation || (Operation = {}));
+})(Operation = exports.Operation || (exports.Operation = {}));
 function getOperationMeta(operation, userObject) {
     var user = userObject.userCredentials.username;
     switch (operation) {
         case Operation.create:
-            return { method: HttpMethod.post, url: '/users', beforeMessage: "Creating user ".concat(user), afterMessage: "User ".concat(user, " created") };
+            return { method: commonjs_1.HttpMethod.post, url: '/users', beforeMessage: "Creating user ".concat(user), afterMessage: "User ".concat(user, " created") };
         case Operation.update:
-            return { method: HttpMethod.put, url: "/users/".concat(userObject.id, ".json"), beforeMessage: "Updating user ".concat(user), afterMessage: "User ".concat(user, " updated") };
+            return { method: commonjs_1.HttpMethod.put, url: "/users/".concat(userObject.id, ".json"), beforeMessage: "Updating user ".concat(user), afterMessage: "User ".concat(user, " updated") };
     }
 }
-export function createUpdateUser(operation, baseUrl, authorization, userObject) {
+function createUpdateUser(operation, baseUrl, authorization, userObject) {
     return __awaiter(this, void 0, void 0, function () {
         var _a, method, url, beforeMessage, afterMessage, response;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     _a = getOperationMeta(operation, userObject), method = _a.method, url = _a.url, beforeMessage = _a.beforeMessage, afterMessage = _a.afterMessage;
-                    info(beforeMessage);
-                    userObject.userCredentials.password = 'Cypress1!';
-                    return [4 /*yield*/, sendJson(method, assembleUrl(baseUrl, url), userObject, authorization)];
+                    (0, print_1.info)(beforeMessage);
+                    return [4 /*yield*/, (0, httpRequest_service_1.sendJson)(method, (0, assembleUrl_service_1.assembleUrl)(baseUrl, url), userObject, authorization)];
                 case 1:
                     response = _b.sent();
                     if (response.success)
-                        return [2 /*return*/, success("".concat(afterMessage, " Response: ").concat(response.rawResponse.status, " ").concat(response.rawResponse.statusText))];
+                        return [2 /*return*/, (0, print_1.success)("".concat(afterMessage, " Response: ").concat(response.rawResponse.status, " ").concat(response.rawResponse.statusText))];
                     else
-                        error(response.errorMessage || '');
-                    if (response.errorType === ErrorType.alreadyExists && operation === Operation.create)
+                        (0, print_1.error)(response.errorMessage || '');
+                    if (response.errorType === commonjs_1.ErrorType.alreadyExists && operation === Operation.create)
                         return [2 /*return*/, createUpdateUser(Operation.update, baseUrl, authorization, userObject)];
                     return [2 /*return*/];
             }
         });
     });
 }
+exports.createUpdateUser = createUpdateUser;
 //# sourceMappingURL=createUser.service.js.map
