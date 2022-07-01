@@ -1,0 +1,25 @@
+import { getJson, getText, getBlob } from "./services/methods/get.service";
+import { getBaseUrl, register, setTestUsername } from "./services/config.service";
+import { registerGetMock } from "./services/mock/getMock.serivce";
+import { initTestCache } from "./services/cache/getCache.service";
+import { postJson, postText, putJson, postEmpty, patchJson } from "./services/methods/sendData.service";
+import { registerSendMock } from "./services/mock/sendMock.service";
+export * from "./services/methods/inspectResponse.service";
+export * from "./types/http.types";
+declare const _default: {
+    getJson: typeof getJson;
+    getText: typeof getText;
+    getBlob: typeof getBlob;
+    postJson: typeof postJson;
+    putJson: typeof putJson;
+    patchJson: typeof patchJson;
+    postText: typeof postText;
+    postEmpty: typeof postEmpty;
+    registerGetMock: typeof registerGetMock;
+    registerSendMock: typeof registerSendMock;
+    initTestCache: typeof initTestCache;
+    setTestUsername: typeof setTestUsername;
+    register: typeof register;
+    getBaseUrl: typeof getBaseUrl;
+};
+export default _default;

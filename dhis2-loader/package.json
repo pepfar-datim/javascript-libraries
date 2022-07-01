@@ -1,6 +1,6 @@
 {
   "name": "@pepfar-react-lib/dhis2-loader",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Scripts to load data into DHIS2",
   "main": "jsbuild/index.js",
   "scripts": {
