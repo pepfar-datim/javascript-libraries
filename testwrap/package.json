@@ -1,6 +1,6 @@
 {
   "name": "@pepfar-react-lib/testwrap",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Intuitive wrapper for @testing-library",
   "main": "index.ts",
   "exports": {
