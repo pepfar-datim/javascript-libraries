@@ -75,7 +75,7 @@ export function textWait(text:string):Promise<any>{
  * */
 export async function textsWait(textsToFind:string[],timeOut?:number):Promise<any>{
     for (const text of textsToFind){
-        await screen.findAllByText(new RegExp(escapeRegExp(text)),{},{timeout:timeOut||5000})
+        await screen.findAllByText(new RegExp(text),{},{timeout:timeOut||5000})
     }
 }
 
