@@ -1,6 +1,12 @@
-import {getFullUrl} from "../config.service";
+import {getFullUrl, isTestEnv} from "../config.service";
+import {mockSendingData} from "../mock/sendMock.service";
 
 
 export function deleteData(endpointUrl:string,options?:any){
-    return fetch(getFullUrl(endpointUrl),{credentials: 'include', ...options})
+    if (isTestEnv()) return mockSendingData(endpointUrl,{});
+    return fetch(getFullUrl(endpointUrl),{
+        method: 'DELETE',
+        credentials: 'include',
+        ...options
+    })
 }
