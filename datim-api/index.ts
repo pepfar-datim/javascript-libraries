@@ -8,7 +8,7 @@ import {deleteData} from "./services/methods/delete.service";
 export * from "./services/methods/inspectResponse.service";
 export * from "./types/http.types";
 
-export default {
+export {
     getJson,
     getText,
     getBlob,
