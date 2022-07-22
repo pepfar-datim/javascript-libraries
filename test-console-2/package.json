@@ -1,0 +1,61 @@
+{
+  "name": "@pepfar-react-lib/test-console-2",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.ts",
+  "dependencies": {
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.9.3",
+    "@mui/material": "^5.9.1",
+    "@mui/styles": "^5.9.1",
+    "@pepfar-react-lib/datim-api": "^0.0.18",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.45",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "craco": "^0.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4"
+  },
+  "devDependencies": {
+    "@pepfar-react-lib/dep-copy": "^0.0.11",
+    "@pepfar-react-lib/testwrap": "^0.0.12"
+  },
+  "scripts": {
+    "start": "REACT_APP_BASE_URL=https://jakub.datim.org/ craco start",
+    "dep:copy": "sh node_modules/@pepfar-react-lib/dep-copy/bin/dep-copy.sh",
+    "build": "react-scripts build",
+    "test": "REACT_APP_BASE_URL=https://jakub.datim.org/ react-scripts test --maxWorkers=6 --verbose",
+    "test:cache": "rm cachedApiCalls/*"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!@pepfar-react-lib|node-fetch|data-uri-to-buffer|fetch-blob|formdata-polyfill/.*)"
+    ]
+  }
+}
