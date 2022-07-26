@@ -10,6 +10,7 @@ module.exports = {
                     configFile: 'tsconfig.json',
                 },
             })
+            webpackConfig.entry = webpackConfig.entry.replace('index.ts','example.component.tsx')
             return webpackConfig;
         }
     }

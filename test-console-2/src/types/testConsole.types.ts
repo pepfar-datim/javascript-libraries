@@ -1,0 +1,1 @@
+export type CustomMethod = {name:string, method:()=>void};

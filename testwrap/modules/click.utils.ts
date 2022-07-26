@@ -22,7 +22,7 @@ export function click(id:string){
  * ```
  * @category Click
  * */
-export function clickByText(text:string){
+export function clickByText(text:string|RegExp){
     fireEvent.click(screen.getByText(text));
 }
 

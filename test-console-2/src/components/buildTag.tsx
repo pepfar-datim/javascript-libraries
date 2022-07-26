@@ -11,18 +11,10 @@ const styles = {
     }
 }
 
-export function BuildTag({buildName, buildDate}:{buildName?:string, buildDate: string}){
+export function BuildTag({buildName}:{buildName?:string}){
     return <React.Fragment>
-        {buildName &&<>
-            <Typography style={styles.label}>Build Name</Typography>
-            <Typography style={styles.value}>{buildName}</Typography>
-        </>}
-        {/*<Typography variant='caption' style={styles.label}>Build Date</Typography>*/}
-        {/*<List>*/}
-        {/*    <ListItem>*/}
-        {/*        <Typography variant='caption'>{buildDate}</Typography>*/}
-        {/*    </ListItem>*/}
-        {/*</List>*/}
+        <Typography style={styles.label}>Build Name</Typography>
+        <Typography style={styles.value}>{buildName}</Typography>
     </React.Fragment>
 
 }

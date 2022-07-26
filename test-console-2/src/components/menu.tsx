@@ -1,14 +1,8 @@
 import {Divider, Drawer, List, ListItem, ListItemText, styled, Typography, withStyles} from "@mui/material";
-import React, {CSSProperties} from "react";
-import {CustomMethod} from "../testConsole";
+import React, {CSSProperties, ReactElement} from "react";
 import {Logo} from "./logo";
 import {BuildTag} from "./buildTag";
-
-const styles = {
-    root: {
-        minWidth: 200
-    } as CSSProperties
-};
+import {CustomMethod} from "../types/testConsole.types";
 
 let DevToolsDrawer = styled(Drawer)({
     paper: {
@@ -18,18 +12,24 @@ let DevToolsDrawer = styled(Drawer)({
     }
 });
 
-function Menu({open, customMethods, onClose, buildName, buildDate, children}:{open:boolean, customMethods:CustomMethod[], onClose:()=>void, buildName:string, buildDate:string, children?}){
+function Menu({open, customMethods, onClose, buildName, customComponents}:{
+    open:boolean,
+    buildName:string,
+    customMethods:CustomMethod[],
+    customComponents?: ReactElement|ReactElement[],
+    onClose:()=>void,
+}){
     return <DevToolsDrawer open={open} anchor='right' onClose={onClose}>
         <Logo/>
         <Divider/>
-        <BuildTag buildName={buildName} buildDate={buildDate}/>
+        <BuildTag buildName={buildName}/>
         <Divider/>
         <Typography style={{fontWeight: 500}}>Custom Functions</Typography>
         <List dense={true}>
-            {customMethods.map(({name,method}:CustomMethod)=><ListItem key={name} button onClick={method}><ListItemText>{name}</ListItemText></ListItem>)}
+            {customMethods.map(({name,method}:CustomMethod,i:number)=><ListItem key={name} onClick={method}><ListItemText>{i+1}. {name}</ListItemText></ListItem>)}
         </List>
         <Divider/>
-        {children}
+        {customComponents}
     </DevToolsDrawer>
 }
 
