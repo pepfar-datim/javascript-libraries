@@ -1,10 +1,8 @@
 {
   "name": "@pepfar-react-lib/test-console-2",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
   "main": "src/index.ts",
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
