@@ -1,8 +1,9 @@
 import { register } from "@pepfar-react-lib/datim-api";
 import React from "react";
 import ReactDOM from 'react-dom/client';
-import {TestConsole} from "./testConsole.component";
-import {CustomMethod} from "./types/testConsole.types";
+import {TestConsole} from "./modules/testConsole/components/testConsole.component";
+import {CustomMethod} from "./modules/testConsole/types/testConsole.types";
+import {SqlHash} from "./modules/sqlHash/components/sqlHash.component";
 
 // @ts-ignore
 register(process.env.NODE_ENV,process.env.REACT_APP_BASE_URL);
@@ -15,7 +16,11 @@ const testMethods:CustomMethod[] = [{
 export function Example({}:{}) {
     return <>
         Example app
-        <TestConsole buildName={'Example use'} testMethods={testMethods}/>
+        <TestConsole
+            buildName={'Example use'}
+            testMethods={testMethods}
+            customComponents={<SqlHash functionName={'view_duplicates'} expectedHash={'123'}/>}
+        />
     </>;
 }
 

@@ -1,8 +1,8 @@
 import {render} from "@testing-library/react";
 import React from "react";
 import {debug, pause, texts, textsWait, clickByText} from "@pepfar-react-lib/testwrap";
-import {openViaTest, TestConsole} from "../testConsole.component";
-import {CustomMethod} from "../types/testConsole.types";
+import {openViaTest, TestConsole} from "../modules/testConsole/components/testConsole.component";
+import {CustomMethod} from "../modules/testConsole/types/testConsole.types";
 import {registerGetMock} from "@pepfar-react-lib/datim-api";
 import {screen} from "@testing-library/react";
 

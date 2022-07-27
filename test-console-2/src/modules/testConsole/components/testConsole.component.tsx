@@ -1,10 +1,10 @@
 import React, {CSSProperties, ReactElement, Suspense} from "react";
 import {CircularProgress} from "@mui/material";
 import {isTestEnv} from "@pepfar-react-lib/datim-api";
-import {checkSuperUser} from "./services/checkSuperUser.service";
-import {CustomMethod} from "./types/testConsole.types";
+import {checkSuperUser} from "../services/checkSuperUser.service";
+import {CustomMethod} from "../types/testConsole.types";
 
-const Menu = React.lazy(() => import('./components/menu'));
+const Menu = React.lazy(() => import('./menu'));
 
 const styles = {
     root: {
@@ -15,7 +15,7 @@ const styles = {
         fontSize: 13
     } as CSSProperties,
     loading: {
-        paddingTop: 300
+        marginTop: 300
     }
 };
 

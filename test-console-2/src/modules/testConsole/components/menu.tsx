@@ -4,13 +4,15 @@ import {Logo} from "./logo";
 import {BuildTag} from "./buildTag";
 import {CustomMethod} from "../types/testConsole.types";
 
-let DevToolsDrawer = styled(Drawer)({
-    paper: {
-        minWidth: 300,
-        maxWidth: 700,
-        padding:'10px 10px'
+const styles = {
+    root: {
+        '& .MuiPaper-root':{
+            paddingTop: '63px',
+            minWidth: 180,
+            maxWidth: 700,
+        }
     }
-});
+}
 
 function Menu({open, customMethods, onClose, buildName, customComponents}:{
     open:boolean,
@@ -19,7 +21,7 @@ function Menu({open, customMethods, onClose, buildName, customComponents}:{
     customComponents?: ReactElement|ReactElement[],
     onClose:()=>void,
 }){
-    return <DevToolsDrawer open={open} anchor='right' onClose={onClose}>
+    return <Drawer open={open} anchor='right' onClose={onClose} sx={styles.root}>
         <Logo/>
         <Divider/>
         <BuildTag buildName={buildName}/>
@@ -30,7 +32,7 @@ function Menu({open, customMethods, onClose, buildName, customComponents}:{
         </List>
         <Divider/>
         {customComponents}
-    </DevToolsDrawer>
+    </Drawer>
 }
 
 export default Menu as React.ComponentType<any>;

@@ -10,6 +10,7 @@
     "@emotion/styled": "^11.9.3",
     "@mui/material": "^5.9.1",
     "@mui/styles": "^5.9.1",
+    "@mui/icons-material": "^5.8.4",
     "@pepfar-react-lib/datim-api": "^0.0.18",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
