@@ -11,7 +11,14 @@ const styles = {
             minWidth: 180,
             maxWidth: 700,
         }
+    },
+    list: {
+        padding: '0px!important'
+    },
+    listItem: {
+        padding: '0px!important'
     }
+
 }
 
 function Menu({open, customMethods, onClose, buildName, customComponents}:{
@@ -26,9 +33,9 @@ function Menu({open, customMethods, onClose, buildName, customComponents}:{
         <Divider/>
         <BuildTag buildName={buildName}/>
         <Divider/>
-        <Typography style={{fontWeight: 500}}>Custom Functions</Typography>
-        <List dense={true}>
-            {customMethods.map(({name,method}:CustomMethod,i:number)=><ListItem key={name} onClick={method}><ListItemText>{i+1}. {name}</ListItemText></ListItem>)}
+        <Typography>Custom Functions</Typography>
+        <List dense={true} sx={styles.list}>
+            {customMethods.map(({name,method}:CustomMethod,i:number)=><ListItem key={name} onClick={method} sx={styles.listItem}><ListItemText>{i+1}. {name}</ListItemText></ListItem>)}
         </List>
         <Divider/>
         {customComponents}
