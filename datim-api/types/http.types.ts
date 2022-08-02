@@ -16,7 +16,8 @@ export enum ErrorType {
     httpError,
     alreadyExists,
     dhis2ErrorSpecified,
-    dhis2ErrorUnspecified
+    dhis2ErrorUnspecified,
+    ignored
 }
 
 export type ApiResponse = {

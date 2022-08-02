@@ -1,5 +1,5 @@
 import {ApiResponse, ContentType, HttpMethod} from "../../types/http.types";
-import {inspectResponse} from "./inspectResponse.service";
+import {inspectResponse, throwException} from "./inspectResponse.service";
 import {mockSendingData} from "../mock/sendMock.service";
 import {getFullUrl, isTestEnv} from "../config.service";
 
@@ -32,8 +32,5 @@ function sendData(method:HttpMethod,endpoint:string,contentType:ContentType,payl
             'Content-Type':contentType
         },
         body: contentType===ContentType.json?JSON.stringify(payload):payload
-    }).then(inspectResponse).then((apiResponse:ApiResponse)=>{
-        if (!apiResponse.success) throw new Error(apiResponse.errorMessage);
-        else return apiResponse;
-    })
+    }).then(inspectResponse).then(throwException)
 }

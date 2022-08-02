@@ -5,6 +5,7 @@ let sendMockService = new MockService();
 type SendMockRecord = {
     response:any,
     resolve:(payload:any)=>void,
+    reject: (error:any)=>void,
     success
 }
 
@@ -18,7 +19,8 @@ export function mockSendingData(url:string,payload:any):Promise<ApiResponse>{
     if (!isSendMocked(url)) throw new Error(`POST/PUT mock not in place`);
     let {resolve, response,success}:SendMockRecord = sendMockService.getMockedResponse(url);
     resolve(payload);
-    return Promise.resolve({responseBody:response,success,rawResponse:null});
+    if (success) return Promise.resolve({responseBody:response,success,rawResponse:null});
+    else return Promise.reject();
 }
 
 export function isSendMocked(url:string):boolean{

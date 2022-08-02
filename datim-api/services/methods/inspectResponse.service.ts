@@ -53,8 +53,19 @@ export async function inspectResponse(rawResponse:Response|any):Promise<ApiRespo
         } catch(e){
             return failService.fail(ErrorType.dhis2ErrorUnspecified)
         }
+        if (responseBody.status==='WARNING')try {
+            if (responseBody.importCount.ignored>0) return failService.fail(ErrorType.ignored)
+            return failService.fail(ErrorType.dhis2ErrorSpecified)
+        } catch(e){
+            return failService.fail(ErrorType.dhis2ErrorSpecified)
+        }
     } catch (e){
-        return failService.fail(ErrorType.cannotParse);
+        return failService.success();
     }
     return failService.success();
+}
+
+export function throwException(apiResponse:ApiResponse){
+    if (!apiResponse.success) throw new Error(apiResponse.errorMessage);
+    else return apiResponse;
 }
