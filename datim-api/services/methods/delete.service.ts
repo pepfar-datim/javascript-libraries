@@ -1,6 +1,6 @@
 import {getFullUrl, isTestEnv} from "../config.service";
 import {mockSendingData} from "../mock/sendMock.service";
-import {inspectResponse, throwException} from "./inspectResponse.service";
+import {inspectResponse} from "./inspectResponse.service";
 import {ApiResponse} from "../../types/http.types";
 
 export function deleteData(endpointUrl:string,options?:any):Promise<ApiResponse>{
@@ -9,5 +9,5 @@ export function deleteData(endpointUrl:string,options?:any):Promise<ApiResponse>
         method: 'DELETE',
         credentials: 'include',
         ...options
-    }).then(inspectResponse).then(throwException)
+    }).then(inspectResponse)/*.then(throwException)*/
 }

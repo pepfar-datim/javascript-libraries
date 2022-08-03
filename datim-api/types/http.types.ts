@@ -11,12 +11,9 @@ export enum ContentType {
 }
 
 export enum ErrorType {
-    cannotParse,
     silentRedirect,
     httpError,
     alreadyExists,
-    dhis2ErrorSpecified,
-    dhis2ErrorUnspecified,
     ignored
 }
 

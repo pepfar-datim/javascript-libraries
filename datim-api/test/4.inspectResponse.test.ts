@@ -1,10 +1,11 @@
-import {ApiResponse, ErrorType, inspectResponse, throwException} from "../index";
+import {ErrorType, getErrorMessage, inspectResponse} from "../index";
 
 type TestCase = {
     input: any,
     success: boolean,
     name: string,
-    errorType?: ErrorType
+    errorType?: ErrorType,
+    responseBody?:any
 }
 
 let alreadyExistsError = {
@@ -21,6 +22,10 @@ let alreadyExistsError = {
 let ignoredWarning = {
     status: 'WARNING',
     importCount:{ignored:1}
+}
+
+let successResponse = {
+    inserted: 1
 }
 
 const testCases:TestCase[] = [{
@@ -46,6 +51,7 @@ const testCases:TestCase[] = [{
         status: 204
     },
     success: true,
+    responseBody: undefined
 },{
     name: 'DHIS2 error > object already exists',
     input: {
@@ -69,21 +75,20 @@ const testCases:TestCase[] = [{
         text: ()=>Promise.resolve(undefined)
     },
     success: true,
+    responseBody: undefined,
+},{
+    name: 'success with response body',
+    input: {
+        ok:true,
+        text: ()=>Promise.resolve(JSON.stringify(successResponse))
+    },
+    success: true,
+    responseBody: successResponse,
 }];
 
-testCases.forEach(({input,success,name,errorType})=>{
+testCases.forEach(({name, input, success, responseBody, errorType})=>{
     test(`4 > Inspect Response > ${name}`, async ()=>{
-        let apiResponse:ApiResponse;
-        let process = async ()=>{
-            apiResponse = await inspectResponse(input);
-            throwException(apiResponse);
-        };
-        if (success) {
-            await expect(process).not.toThrow();
-        } else {
-            await expect(process).rejects.toThrow();
-            expect(apiResponse.errorType).toBe(errorType);
-        }
-
+        if (success) expect((await inspectResponse(input)).responseBody).toStrictEqual(responseBody)
+        else await expect(inspectResponse(input)).rejects.toThrow(Error(getErrorMessage(errorType)));
     })
 })
