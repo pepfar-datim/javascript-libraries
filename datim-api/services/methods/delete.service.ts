@@ -9,5 +9,5 @@ export function deleteData(endpointUrl:string,options?:any):Promise<ApiResponse>
         method: 'DELETE',
         credentials: 'include',
         ...options
-    }).then(inspectResponse)/*.then(throwException)*/
+    }).then(inspectResponse)
 }
