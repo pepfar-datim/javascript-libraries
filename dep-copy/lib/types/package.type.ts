@@ -12,3 +12,9 @@ export type PackageJson = {
     dependencies:Map;
     peerDependencies:Map;
 }
+
+export type PackageMeta = {
+    name:PackageName;
+    path:string;
+    peerDependencies: string[]
+}

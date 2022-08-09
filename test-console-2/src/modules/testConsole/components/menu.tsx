@@ -21,9 +21,9 @@ const styles = {
 
 }
 
-function Menu({open, customMethods, onClose, buildName, customComponents}:{
+function Menu({open, customMethods, onClose, buildDate, customComponents}:{
     open:boolean,
-    buildName:string,
+    buildDate:string,
     customMethods:CustomMethod[],
     customComponents?: ReactElement|ReactElement[],
     onClose:()=>void,
@@ -31,7 +31,7 @@ function Menu({open, customMethods, onClose, buildName, customComponents}:{
     return <Drawer open={open} anchor='right' onClose={onClose} sx={styles.root}>
         <Logo/>
         <Divider/>
-        <BuildTag buildName={buildName}/>
+        <BuildTag buildDate={buildDate}/>
         <Divider/>
         <Typography>Custom Functions</Typography>
         <List dense={true} sx={styles.list}>
