@@ -1,3 +1,2 @@
-"use strict";
-exports.__esModule = true;
+export {};
 //# sourceMappingURL=package.type.js.map

@@ -1,11 +1,11 @@
 {
   "name": "@pepfar-react-lib/dep-copy",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Live-update npm packages inside your main project for local development",
   "main": "index.ts",
   "scripts": {
     "test": "jest --watch",
-    "build": "tsc --outDir build --module commonjs"
+    "build": "tsc --outDir build --module esnext"
   },
   "bin": {
     "dep-copy": ""
