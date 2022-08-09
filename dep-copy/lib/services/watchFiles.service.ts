@@ -6,8 +6,8 @@ function setupReporter(copyHandle:any,path:string){
     copyHandle.on('copy',(e:any)=>console.log(e.srcPath.replace(path,'')));
 }
 
-export async function watchFiles({path,packageName}:PackageMeta){
+export async function watchFiles({path,name}:PackageMeta){
     return new Promise(()=>{
-        setupReporter(cpx.watch(path+'/**/*', getLocalPath(packageName),{initialCopy:false}),path)
+        setupReporter(cpx.watch(path+'/**/*', getLocalPath(name),{initialCopy:false}),path)
     })
 }
