@@ -1,4 +1,6 @@
-import { splitPackageName } from "../lib/services/getPackageName.service";
+"use strict";
+exports.__esModule = true;
+var getPackageName_service_1 = require("../lib/services/getPackageName.service");
 var testCases = [{
         input: '@jakub-bao/dev-copy',
         output: {
@@ -9,7 +11,7 @@ var testCases = [{
 function generateTest(_a) {
     var input = _a.input, output = _a.output;
     test("1 > splitPackageName ".concat(input), function () {
-        expect(splitPackageName(input)).toStrictEqual(output);
+        expect((0, getPackageName_service_1.splitPackageName)(input)).toStrictEqual(output);
     });
 }
 testCases.forEach(generateTest);

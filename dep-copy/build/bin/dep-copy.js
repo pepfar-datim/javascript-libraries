@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,19 +35,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { getLocalPath } from "./path.service";
-var cpx = require("cpx");
-function setupReporter(copyHandle, path) {
-    copyHandle.on('copy', function (e) { return console.log(e.srcPath.replace(path, '')); });
-}
-export function watchFiles(_a) {
-    var path = _a.path, name = _a.name;
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_b) {
-            return [2 /*return*/, new Promise(function () {
-                    setupReporter(cpx.watch(path + '/**/*', getLocalPath(name), { initialCopy: false }), path);
-                })];
-        });
+exports.__esModule = true;
+var getPackageMeta_service_1 = require("../lib/services/getPackageMeta.service");
+var fullCopy_service_1 = require("../lib/services/fullCopy.service");
+var watchFiles_service_1 = require("../lib/services/watchFiles.service");
+console.log("CWD is ".concat(process.cwd()));
+var path = process.argv[2];
+(0, getPackageMeta_service_1.getPackageMeta)(path).then(function (packageMeta) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                console.log("Importing npm package: ".concat(packageMeta.name.localName, " from: ").concat(path));
+                return [4 /*yield*/, (0, fullCopy_service_1.fullCopy)(packageMeta)];
+            case 1:
+                _a.sent();
+                (0, watchFiles_service_1.watchFiles)(packageMeta);
+                return [2 /*return*/];
+        }
     });
-}
-//# sourceMappingURL=watchFiles.service.js.map
+}); });
+//# sourceMappingURL=dep-copy.js.map

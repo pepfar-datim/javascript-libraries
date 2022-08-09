@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,9 +35,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { fullCopy } from "../lib/services/fullCopy.service";
-import { getPackageMeta } from "../lib/services/getPackageMeta.service";
-import { rmSync, existsSync } from "fs";
+exports.__esModule = true;
+var fullCopy_service_1 = require("../lib/services/fullCopy.service");
+var getPackageMeta_service_1 = require("../lib/services/getPackageMeta.service");
+var fs_1 = require("fs");
 var orgPath = 'node_modules/@our-org';
 var testCases = [{
         path: "".concat(orgPath, "/testlib"),
@@ -61,11 +63,11 @@ describe("4 > Full copy", function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    rmSync(orgPath, { recursive: true, force: true });
-                    return [4 /*yield*/, getPackageMeta("test/data")];
+                    (0, fs_1.rmSync)(orgPath, { recursive: true, force: true });
+                    return [4 /*yield*/, (0, getPackageMeta_service_1.getPackageMeta)("test/data")];
                 case 1:
                     packageMeta = _a.sent();
-                    return [4 /*yield*/, fullCopy(packageMeta)];
+                    return [4 /*yield*/, (0, fullCopy_service_1.fullCopy)(packageMeta)];
                 case 2:
                     _a.sent();
                     return [2 /*return*/];
@@ -75,7 +77,7 @@ describe("4 > Full copy", function () {
     testCases.forEach(function (_a) {
         var name = _a.name, path = _a.path, exist = _a.exist;
         test(" 4 > fully copy > ".concat(name, " should ").concat(exist ? 'exist' : 'not exist', ": ").concat(path.replace('node_modules', '')), function () {
-            expect(existsSync(path)).toBe(exist);
+            expect((0, fs_1.existsSync)(path)).toBe(exist);
         });
     });
 });

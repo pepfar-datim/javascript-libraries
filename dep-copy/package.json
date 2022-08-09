@@ -1,11 +1,11 @@
 {
   "name": "@pepfar-react-lib/dep-copy",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Live-update npm packages inside your main project for local development",
   "main": "index.ts",
   "scripts": {
     "test": "jest --watch",
-    "build:es6js": "tsc --outDir build/es6js --module esnext"
+    "build": "tsc --outDir build --module commonjs"
   },
   "bin": {
     "dep-copy": ""
@@ -16,10 +16,10 @@
   },
   "exports": {
     ".": {
-      "import": "./index.ts"
+      "import": "./bin/dep-copy.ts"
     },
-    "./build/es6js": {
-      "import": "./build/es6js/bin/dep-copy.js"
+    "./build": {
+      "import": "./build/bin/dep-copy.js"
     }
   },
   "author": "Jakub Flaska",

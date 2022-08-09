@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,9 +35,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { splitPackageName } from "./getPackageName.service";
+exports.__esModule = true;
+exports.getPackageMeta = void 0;
+var getPackageName_service_1 = require("./getPackageName.service");
 var jsonfile = require("jsonfile");
-export function getPackageMeta(path) {
+function getPackageMeta(path) {
     return __awaiter(this, void 0, void 0, function () {
         var packageJson;
         return __generator(this, function (_a) {
@@ -45,7 +48,7 @@ export function getPackageMeta(path) {
                 case 1:
                     packageJson = _a.sent();
                     return [2 /*return*/, {
-                            name: splitPackageName(packageJson.name),
+                            name: (0, getPackageName_service_1.splitPackageName)(packageJson.name),
                             peerDependencies: Object.keys(packageJson.peerDependencies),
                             path: path
                         }];
@@ -53,4 +56,5 @@ export function getPackageMeta(path) {
         });
     });
 }
+exports.getPackageMeta = getPackageMeta;
 //# sourceMappingURL=getPackageMeta.service.js.map
