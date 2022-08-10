@@ -9,6 +9,7 @@ let path:string = process.argv[2];
 let packageMeta = getPackageMeta(path)
 console.log(`Importing npm package: ${packageMeta.name.localName} from: ${path}`);
 fullCopy(packageMeta).then(()=>{
+    console.log(`Initial copy done`)
     watchFiles(packageMeta);
 })
 

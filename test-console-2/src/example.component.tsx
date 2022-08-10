@@ -17,7 +17,7 @@ export function Example({}:{}) {
     return <>
         Example app
         <TestConsole
-            buildName={'Example use'}
+            buildDate={'Example use'}
             testMethods={testMethods}
             customComponents={<SqlHash functionName={'view_duplicates'} expectedHash={'123'}/>}
         />

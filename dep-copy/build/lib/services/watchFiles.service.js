@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import { getLocalPath } from "./path.service";
-var cpx = require("cpx");
+import cpx from "cpx";
 function setupReporter(copyHandle, path) {
     copyHandle.on('copy', function (e) { return console.log(e.srcPath.replace(path, '')); });
 }
@@ -43,9 +43,9 @@ export function watchFiles(_a) {
     var path = _a.path, name = _a.name;
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_b) {
-            return [2 /*return*/, new Promise(function () {
-                    setupReporter(cpx.watch(path + '/**/*', getLocalPath(name), { initialCopy: false }), path);
-                })];
+            // return new Promise(()=>{
+            setupReporter(cpx.watch(path + '/**/*', getLocalPath(name), { initialCopy: false }), path);
+            return [2 /*return*/];
         });
     });
 }
