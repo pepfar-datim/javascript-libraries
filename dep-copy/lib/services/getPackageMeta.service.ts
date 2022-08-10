@@ -6,7 +6,7 @@ export function getPackageMeta(path:string):PackageMeta{
     let packageJson:PackageJson = JSON.parse(readFileSync(path+'/package.json').toString())
     return {
         name: splitPackageName(packageJson.name),
-        peerDependencies: Object.keys(packageJson.peerDependencies),
+        peerDependencies: packageJson.peerDependencies&&Object.keys(packageJson.peerDependencies),
         path
     }
 }
