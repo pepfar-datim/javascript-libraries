@@ -1,6 +1,6 @@
 {
   "name": "@pepfar-react-lib/dep-copy",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Live-update npm packages inside your main project for local development",
   "main": "index.ts",
   "scripts": {

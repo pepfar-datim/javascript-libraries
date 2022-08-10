@@ -7,7 +7,5 @@ function setupReporter(copyHandle:any,path:string){
 }
 
 export async function watchFiles({path,name}:PackageMeta){
-    // return new Promise(()=>{
-        setupReporter(cpx.watch(path+'/**/*', getLocalPath(name),{initialCopy:false}),path)
-    // })
+    setupReporter(cpx.watch(path+'/**/*', getLocalPath(name),{initialCopy:false}),path)
 }

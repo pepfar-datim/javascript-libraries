@@ -43,7 +43,6 @@ export function watchFiles(_a) {
     var path = _a.path, name = _a.name;
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_b) {
-            // return new Promise(()=>{
             setupReporter(cpx.watch(path + '/**/*', getLocalPath(name), { initialCopy: false }), path);
             return [2 /*return*/];
         });

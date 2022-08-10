@@ -1,4 +1,3 @@
-import {PackageJson, PackageMeta, PackageName} from "../lib/types/package.type";
 import {getPackageMeta} from "../lib/services/getPackageMeta.service";
 import {fullCopy} from "../lib/services/fullCopy.service";
 import {watchFiles} from "../lib/services/watchFiles.service";
