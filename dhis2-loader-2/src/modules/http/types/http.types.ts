@@ -1,3 +1,6 @@
-export type JsonObject = {
-    [key:string]:string|number|JsonObject|JsonObject[]
-} | string[]
+export enum HttpMethod {
+    POST='POST',
+    GET='GET',
+    PUT='PUT',
+    PATCH='PATCH'
+}

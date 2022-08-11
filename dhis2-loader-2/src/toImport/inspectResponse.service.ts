@@ -12,7 +12,8 @@ export enum ErrorType {
     ignored
 }
 
-export function getErrorMessage(errorType:ErrorType):string{
+export function getErrorMessage(errorType:ErrorType, rawResponse?:any):string{
+    // if (rawResponse) console.log(rawResponse)
     switch (errorType){
         case ErrorType.ignored:
             return 'Ignored'
@@ -26,8 +27,15 @@ export function getErrorMessage(errorType:ErrorType):string{
 }
 
 export async function inspectResponse(rawResponse:any):Promise<ApiResponse>{
-    if (!rawResponse.ok) throw Error(getErrorMessage(ErrorType.httpError));
-    if (rawResponse.redirected&&rawResponse.url.includes('login')) throw Error(getErrorMessage(ErrorType.silentRedirect))
+    if (!rawResponse.ok) {
+        try {
+            console.log(await rawResponse.text())
+        } catch(e){
+
+        }
+        throw Error(getErrorMessage(ErrorType.httpError, rawResponse));
+    }
+    if (rawResponse.redirected&&rawResponse.url.includes('login')) throw Error(getErrorMessage(ErrorType.silentRedirect,rawResponse))
     if (rawResponse.status===204&&!rawResponse.redirected) return Promise.resolve({success:true, rawResponse});
     let responseBody:any;
     try {

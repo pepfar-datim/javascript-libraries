@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "description": "",
   "main": "src/index.ts",
+  "types": "build/index.d.ts",
   "exports": {
     ".": {
       "import": "./src/index.ts"
     },
-    "./build": {
-      "import": "./build/index.js"
+    "./js": {
+      "import": "./build/index.js",
+      "types": "./build/index.d.ts"
     }
   },
   "scripts": {
