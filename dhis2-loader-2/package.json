@@ -2,17 +2,8 @@
   "name": "@pepfar-react-lib/dhis2-loader-2",
   "version": "0.0.1",
   "description": "",
-  "main": "src/index.ts",
+  "main": "build/index.js",
   "types": "build/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./src/index.ts"
-    },
-    "./js": {
-      "import": "./build/index.js",
-      "types": "./build/index.d.ts"
-    }
-  },
   "scripts": {
     "build": "tsc"
   },

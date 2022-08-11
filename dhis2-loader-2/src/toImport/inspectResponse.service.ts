@@ -13,7 +13,7 @@ export enum ErrorType {
 }
 
 export function getErrorMessage(errorType:ErrorType, rawResponse?:any):string{
-    // if (rawResponse) console.log(rawResponse)
+    if (rawResponse) console.error("ERROR",rawResponse.url)
     switch (errorType){
         case ErrorType.ignored:
             return 'Ignored'
@@ -33,9 +33,9 @@ export async function inspectResponse(rawResponse:any):Promise<ApiResponse>{
         } catch(e){
 
         }
-        throw Error(getErrorMessage(ErrorType.httpError, rawResponse));
+        throw new Error(getErrorMessage(ErrorType.httpError, rawResponse));
     }
-    if (rawResponse.redirected&&rawResponse.url.includes('login')) throw Error(getErrorMessage(ErrorType.silentRedirect,rawResponse))
+    if (rawResponse.redirected&&rawResponse.url.includes('login')) throw new Error(getErrorMessage(ErrorType.silentRedirect,rawResponse))
     if (rawResponse.status===204&&!rawResponse.redirected) return Promise.resolve({success:true, rawResponse});
     let responseBody:any;
     try {
@@ -43,7 +43,7 @@ export async function inspectResponse(rawResponse:any):Promise<ApiResponse>{
     } catch (e){
         return {success:true, rawResponse};
     }
-    if (responseBody.status==='ERROR') throw Error(getErrorMessage(ErrorType.alreadyExists))
-    if (responseBody.status==='WARNING') throw Error(getErrorMessage(ErrorType.ignored))
+    if (responseBody.status==='ERROR') throw new Error(getErrorMessage(ErrorType.alreadyExists))
+    if (responseBody.status==='WARNING') throw new Error(getErrorMessage(ErrorType.ignored))
     return {success:true, responseBody, rawResponse};
 }
