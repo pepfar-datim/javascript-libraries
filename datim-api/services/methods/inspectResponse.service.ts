@@ -14,9 +14,13 @@ export function getErrorMessage(errorType:ErrorType):string{
     }
 }
 
+function fail(errorType:ErrorType, serverResponse:any):Error{
+    return Error(getErrorMessage(errorType),{cause:serverResponse});
+}
+
 export async function inspectResponse(rawResponse:any):Promise<ApiResponse>{
-    if (!rawResponse.ok) throw Error(getErrorMessage(ErrorType.httpError));
-    if (rawResponse.redirected&&rawResponse.url.includes('login')) throw Error(getErrorMessage(ErrorType.silentRedirect))
+    if (!rawResponse.ok) throw fail(ErrorType.httpError,rawResponse);
+    if (rawResponse.redirected&&rawResponse.url.includes('login')) throw fail(ErrorType.silentRedirect,rawResponse)
     if (rawResponse.status===204&&!rawResponse.redirected) return Promise.resolve({success:true, rawResponse});
     let responseBody:any;
     try {
@@ -24,7 +28,7 @@ export async function inspectResponse(rawResponse:any):Promise<ApiResponse>{
     } catch (e){
         return {success:true, rawResponse};
     }
-    if (responseBody.status==='ERROR') throw Error(getErrorMessage(ErrorType.alreadyExists))
-    if (responseBody.status==='WARNING') throw Error(getErrorMessage(ErrorType.ignored))
+    if (responseBody.status==='ERROR') throw fail(ErrorType.alreadyExists,responseBody)
+    if (responseBody.status==='WARNING') throw fail(ErrorType.ignored,responseBody)
     return {success:true, responseBody, rawResponse};
 }
