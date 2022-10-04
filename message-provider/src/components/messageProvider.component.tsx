@@ -1,5 +1,5 @@
 import React, {ReactElement, useState} from "react";
-import {IconButton, Snackbar} from "@mui/material";
+import {Alert, IconButton, Snackbar} from "@mui/material";
 import {Message, ShowMessage} from "../types/message.type";
 import {Close} from "@mui/icons-material";
 
@@ -12,17 +12,12 @@ export function MessageProvider({children}:{children:any}) {
             open={!!message}
             autoHideDuration={5000}
             onClose={()=>setMessage(null)}
-            message={message?.text}
-            anchorOrigin={{ vertical:'bottom', horizontal:'center' }}
-            action={
-                <IconButton
-                    size="small"
-                    onClick={()=>setMessage(null)}
-                    color={'inherit'}
-                >
-                    <Close fontSize="small" />
-                </IconButton>
-            }
-        />
+            anchorOrigin={{ vertical:'bottom', horizontal:'center' }}>
+
+                <Alert onClose={()=>setMessage(null)} severity={message?.type}>
+                    {message?.text}
+                </Alert>
+
+        </Snackbar>
     </>;
 }
