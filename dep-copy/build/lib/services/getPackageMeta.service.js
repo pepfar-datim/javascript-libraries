@@ -5,6 +5,7 @@ export function getPackageMeta(path) {
     return {
         name: splitPackageName(packageJson.name),
         peerDependencies: Object.keys(packageJson.peerDependencies || {}),
+        devDependencies: Object.keys(packageJson.devDependencies || {}),
         path: path
     };
 }

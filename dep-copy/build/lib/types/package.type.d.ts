@@ -9,9 +9,11 @@ export declare type PackageJson = {
     name: string;
     dependencies: Map;
     peerDependencies: Map;
+    devDependencies: Map;
 };
 export declare type PackageMeta = {
     name: PackageName;
     path: string;
     peerDependencies: string[];
+    devDependencies: string[];
 };
