@@ -1,5 +1,5 @@
 import {getJson,getText, getBlob} from "./services/methods/get.service";
-import {getBaseUrl, isTestEnv, register, setTestUsername} from "./services/config.service";
+import {getAuthorization, getBaseUrl, isTestEnv, register, setTestUsername} from "./services/config.service";
 import {registerGetMock} from "./services/mock/getMock.serivce";
 import {initTestCache} from "./services/cache/getCache.service";
 import {postJson, postText, putJson, postEmpty, patchJson} from "./services/methods/sendData.service";
@@ -24,5 +24,6 @@ export {
     register,
     getBaseUrl,
     deleteData,
-    isTestEnv
+    isTestEnv,
+    getAuthorization
 }
