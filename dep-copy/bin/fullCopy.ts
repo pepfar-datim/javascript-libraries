@@ -1,0 +1,12 @@
+import {getPackageMeta} from "../lib/services/getPackageMeta.service";
+import {fullCopy} from "../lib/services/fullCopy.service";
+
+console.log(`CWD is ${process.cwd()}`)
+
+let path:string = process.argv[2];
+let packageMeta = getPackageMeta(path)
+console.log(`Importing npm package: ${packageMeta.name.localName} from: ${path}`);
+fullCopy(packageMeta).then(()=>{
+    console.log(`Copy done`)
+})
+
