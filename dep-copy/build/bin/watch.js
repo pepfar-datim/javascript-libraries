@@ -9,4 +9,4 @@ fullCopy(packageMeta).then(function () {
     console.log("Initial copy done");
     watchFiles(packageMeta);
 });
-//# sourceMappingURL=dep-copy.js.map
+//# sourceMappingURL=watch.js.map
