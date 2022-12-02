@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "sourceMap": true,
+    "module": "commonjs",
+    "target": "ESNext",
+    "sourceMap": false,
     "strict": false,
     "noImplicitAny": false,
     "baseUrl": "./",
-    "rootDir": "./"
+    "rootDir": "./",
+    "outDir": "build",
+    "skipLibCheck": true,
+    "declaration": true
   },
   "exclude": [
     "node_modules"
