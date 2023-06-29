@@ -7,7 +7,7 @@ import {CustomMethod} from "../types/testConsole.types";
 const styles = {
     root: {
         '& .MuiPaper-root':{
-            paddingTop: '63px',
+            // paddingTop: '63px',
             minWidth: 180,
             maxWidth: 700,
         }
