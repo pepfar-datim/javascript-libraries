@@ -1,3 +1,4 @@
+import React from "react";
 import {HashStatus} from "../types/hashState.type";
 import {Divider, Typography} from "@mui/material";
 import {styled} from "@mui/styles";
