@@ -1,8 +1,9 @@
 {
   "name": "@pepfar-react-lib/datimuser",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "Service to determine DHIS2 user type from raw user object",
   "main": "index.ts",
+  "exports": "./build/index.js",
   "scripts": {
     "test": "jest --watch",
     "typecheck": "tsc --noEmit index.ts"

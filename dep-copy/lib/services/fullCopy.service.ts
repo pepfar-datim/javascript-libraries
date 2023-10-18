@@ -1,11 +1,16 @@
-import {PackageName} from "../types/package.type";
 import {getLocalPath} from "./path.service";
-const cpx = require("cpx");
+import {PackageMeta} from "../types/package.type";
+import cpy from 'cpy';
 
-export async function fullCopy(path:string, packageName:PackageName):Promise<void>{
-    return new Promise((resolve)=>{
-        cpx.copy(path+'/**/*', getLocalPath(packageName), ()=>{
-            resolve();
-        });
-    })
+export function fullCopy({path,name,peerDependencies, devDependencies}:PackageMeta):Promise<any>{
+    let umwantedDeps:string[] = [].concat(devDependencies,peerDependencies)
+    return cpy(path+'/**/*', getLocalPath(name), {
+        filter: file => !umwantedDeps.some((peerName)=>file.relativePath.includes(`node_modules/${peerName}/`))
+    });
+}
+
+export function srcCopy({path,name}:PackageMeta):Promise<any>{
+    return cpy(path+'/**/*', getLocalPath(name), {
+        filter: file => !file.relativePath.includes(`node_modules/`)
+    });
 }

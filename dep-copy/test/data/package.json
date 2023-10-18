@@ -1,7 +1,9 @@
 {
-  "name": "@pepfar-react-lib/easytest",
+  "name": "@our-org/testlib",
   "version": "1.0.0",
-  "dependencies": {
+  "peerDependencies": {
+    "peerDep1": "0.0.1",
+    "@peerOrg/peerDep2": "0.0.2"
   },
   "type": "module"
 }

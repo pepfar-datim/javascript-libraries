@@ -1,7 +1,10 @@
-import {PackageJson, PackageName} from "../lib/types/package.type";
-import {getPackageJson} from "../lib/services/getPackageJson.service";
+import {PackageMeta, PackageJson, PackageName} from "../lib/types/package.type";
+import {getPackageMeta} from "../lib/services/getPackageMeta.service";
 
 test('3 > getPackageJson',async ()=>{
-    let packageJson:PackageJson = await getPackageJson('test/data');
-    expect(packageJson.name).toBe('@pepfar-react-lib/easytest');
+    let packageInfo:PackageMeta = await getPackageMeta('test/data');
+    expect(packageInfo.name.localName).toBe('testlib');
+    expect(packageInfo.name.nameSpace).toBe('our-org')
+    expect(packageInfo.path).toBe('test/data')
+    expect(packageInfo.peerDependencies).toStrictEqual(["peerDep1","@peerOrg/peerDep2"])
 })

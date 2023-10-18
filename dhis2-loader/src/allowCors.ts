@@ -2,9 +2,9 @@ import {sendJson} from "../lib/services/httpRequest.service";
 import {assembleUrl} from "../lib/services/assembleUrl.service";
 import {error, success} from "../lib/services/print";
 import {ApiResponse} from "@pepfar-react-lib/datim-api";
-import {HttpMethod} from "@pepfar-react-lib/datim-api/build/commonjs";
+import {HttpMethod} from "@pepfar-react-lib/datim-api/build/es6js";
 
-let corsToEnable = ['http://localhost','http://localhost:3000'];
+let corsToEnable = ['http://localhost','http://localhost:3000','http://localhost:3001'];
 
 export async function allowCors(baseUrl:string,authorization:string){
     let response:ApiResponse = await sendJson(HttpMethod.post,assembleUrl(baseUrl,'/configuration/corsWhitelist'),corsToEnable,authorization)

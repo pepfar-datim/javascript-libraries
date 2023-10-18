@@ -32,8 +32,5 @@ function sendData(method:HttpMethod,endpoint:string,contentType:ContentType,payl
             'Content-Type':contentType
         },
         body: contentType===ContentType.json?JSON.stringify(payload):payload
-    }).then(inspectResponse).then((apiResponse:ApiResponse)=>{
-        if (!apiResponse.success) throw new Error(apiResponse.errorMessage);
-        else return apiResponse;
-    })
+    }).then(inspectResponse)
 }

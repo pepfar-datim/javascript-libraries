@@ -22,7 +22,7 @@ const styles = {
 export let openViaTest;
 
 export class TestConsole extends React.Component<{
-    buildName:string,
+    buildDate:string,
     testMethods:CustomMethod[],
     customComponents?: ReactElement|ReactElement[]
 }, {isSuperUser:boolean, menuOpen: boolean}>{
@@ -54,7 +54,7 @@ export class TestConsole extends React.Component<{
                     onClose={()=>this.setState({menuOpen: false})}
                     customMethods={this.props.testMethods}
                     customComponents={this.props.customComponents}
-                    buildName={this.props.buildName}
+                    buildDate={this.props.buildDate}
                 />
             </Suspense>}
         </div>;
