@@ -14,7 +14,7 @@ type Map = {
 type PackageJson = {
     name: string;
     devDependencies: Map
-    peerDependecies: Map
+    peerDependencies: Map
 }
 
 // Input
@@ -23,28 +23,6 @@ const modulePath = process.argv[2] || process.argv[1]
 if (!modulePath.includes('/')) throw Error(`Cannot recognize module path`)
 
 // package.json
-
-// const defaultIgnore = [
-//     '.bin',
-//     '@types',
-//
-//     '@jest',
-//     'jest-haste-map',
-//     'jest-regex-util',
-//     'jest-util',
-//     'jest-worker',
-//     'babel-jest',
-//
-//     '.vite',
-//     'vite',
-//     '@vitejs',
-//     'vite-node',
-//     'vite-plugin-eslint',
-//
-//     '.vitest',
-//     'vitest',
-//     '@vitest'
-// ]
 
 const ignoredRegExp = [
     'jest-',
@@ -64,7 +42,7 @@ const parse = (map:Map)=>Object.keys(map||[])
 
 const devAndPeerDeps:string[] = [].concat(
     parse(packageJson.devDependencies),
-    parse(packageJson.peerDependecies)
+    parse(packageJson.peerDependencies)
 )
 
 // Copy
