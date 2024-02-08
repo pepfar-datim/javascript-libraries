@@ -24,14 +24,45 @@ if (!modulePath.includes('/')) throw Error(`Cannot recognize module path`)
 
 // package.json
 
-const defaultIgnore = ['.']
+// const defaultIgnore = [
+//     '.bin',
+//     '@types',
+//
+//     '@jest',
+//     'jest-haste-map',
+//     'jest-regex-util',
+//     'jest-util',
+//     'jest-worker',
+//     'babel-jest',
+//
+//     '.vite',
+//     'vite',
+//     '@vitejs',
+//     'vite-node',
+//     'vite-plugin-eslint',
+//
+//     '.vitest',
+//     'vitest',
+//     '@vitest'
+// ]
+
+const ignoredRegExp = [
+    'jest-',
+    'babel-',
+    'vite-',
+    'eslint-',
+    'node_modules/\\.',
+    '@types',
+    '@vitejs',
+    '@vitest',
+    '@jest'
+]
 
 const packageJson:PackageJson = JSON.parse(readFileSync(`${modulePath}/package.json`).toString())
 const [namespace, name] = packageJson.name.split('/')
 const parse = (map:Map)=>Object.keys(map||[])
 
-const ignoredDependencies:string[] = [].concat(
-    defaultIgnore,
+const devAndPeerDeps:string[] = [].concat(
     parse(packageJson.devDependencies),
     parse(packageJson.peerDependecies)
 )
@@ -39,9 +70,17 @@ const ignoredDependencies:string[] = [].concat(
 // Copy
 
 console.log(`Copying files from ${modulePath} to ./node_modules/${namespace}/${name}`)
-console.log(`The following dependencies will be skipped`, ignoredDependencies)
+console.log(`The following dependencies will be skipped`, devAndPeerDeps)
+
+const isDevPeerDev = (filePath:string)=>devAndPeerDeps.some(dependencyName=>filePath.includes(`node_modules/${dependencyName}/`))
+const isIgnored = (filePath:string)=>ignoredRegExp.some(regex=>new RegExp(regex).test(filePath))
 
 cpy(`${modulePath}/**/*`,`./node_modules/${namespace}/${name}`,{
-    filter: file => !ignoredDependencies.some(dependencyName=>file.relativePath.includes(`node_modules/${dependencyName}/`))
+    filter: file => {
+        const filePath:string = file.relativePath
+        if (isIgnored(filePath)) return false
+        if (isDevPeerDev(filePath)) return false
+        return true
+    }
 })
 
