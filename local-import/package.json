@@ -1,10 +1,10 @@
 {
   "name": "@pepfar-react-lib/local-import",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "scripts": {
     "test": "rm -rf node_modules/@app && tsc && node build/import.js ./test/project",
-    "update": "git commit -a -m fix && npm version patch && npm publish"
+    "update": "tsc && git commit -a -m fix && npm version patch && npm publish"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",

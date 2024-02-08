@@ -24,7 +24,7 @@ if (!modulePath.includes('/')) throw Error(`Cannot recognize module path`)
 
 // package.json
 
-const defaultIgnore = ['node_modules/.']
+const defaultIgnore = ['.']
 
 const packageJson:PackageJson = JSON.parse(readFileSync(`${modulePath}/package.json`).toString())
 const [namespace, name] = packageJson.name.split('/')
