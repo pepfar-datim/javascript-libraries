@@ -1,7 +1,9 @@
 import cpy from 'cpy'
 import {readFileSync} from "node:fs";
 
-const modulePath = process.argv[2]
+const modulePath = process.argv[2] || process.argv[1]
+
+if (!modulePath.includes('/')) throw Error(`Cannot recognize module path`)
 
 type Map = {
     [key:string]:string
