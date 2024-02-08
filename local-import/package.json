@@ -1,16 +1,10 @@
 {
   "name": "@pepfar-react-lib/local-import",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "rm -rf node_modules/@app && tsc && node build/index.js ./test/project"
+    "test": "rm -rf node_modules/@app && tsc && node build/import.js ./test/project"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pepfar-datim/javascript-libraries.git"
-  },
-  "private": true,
   "devDependencies": {
     "@types/node": "^20.11.16",
     "typescript": "^5.3.3"
@@ -18,5 +12,8 @@
   "dependencies": {
     "cpy": "^11.0.0"
   },
-  "type": "module"
+  "type": "module",
+  "bin": {
+    "import": "./build/import.js"
+  }
 }
