@@ -23,4 +23,4 @@ __exportStar(require("./modules/select.utils"), exports);
 __exportStar(require("./modules/checkbox.utils"), exports);
 __exportStar(require("./modules/disableWindowLocation.utils"), exports);
 __exportStar(require("./modules/type.utils"), exports);
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.ts.map

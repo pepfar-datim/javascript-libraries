@@ -16,4 +16,4 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 exports.__esModule = true;
 __exportStar(require("./src/loadUsers"), exports);
 __exportStar(require("./src/allowCors"), exports);
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.ts.map

@@ -38,4 +38,4 @@ exports["default"] = {
     register: config_service_1.register,
     getBaseUrl: config_service_1.getBaseUrl
 };
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.ts.map

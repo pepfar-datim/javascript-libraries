@@ -22,4 +22,4 @@ export default {
     register: register,
     getBaseUrl: getBaseUrl
 };
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.ts.map

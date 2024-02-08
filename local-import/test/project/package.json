@@ -1,0 +1,7 @@
+{
+  "name": "@app/module1",
+  "devDependencies": {
+    "react": "1",
+    "@vite/vitejs": "1"
+  }
+}

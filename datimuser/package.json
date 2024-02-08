@@ -3,7 +3,7 @@
   "version": "0.0.7",
   "description": "Service to determine DHIS2 user type from raw user object",
   "main": "index.ts",
-  "exports": "./build/index.js",
+  "exports": "./index.ts",
   "scripts": {
     "test": "jest --watch",
     "typecheck": "tsc --noEmit index.ts"
