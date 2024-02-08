@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import cpy from 'cpy'
 import {readFileSync} from "node:fs";
 
