@@ -3,7 +3,7 @@
 // Imports
 
 import cpy from 'cpy'
-import {readFileSync} from "node:fs";
+import {readFileSync, rmSync} from "node:fs";
 
 // Types
 
@@ -46,6 +46,8 @@ const devAndPeerDeps:string[] = [].concat(
 )
 
 // Copy
+
+rmSync(`./node_modules/${namespace}/${name}`, { recursive: true, force: true })
 
 console.log(`Copying files from ${modulePath} to ./node_modules/${namespace}/${name}`)
 console.log(`The following dependencies will be skipped`, devAndPeerDeps)
