@@ -49,8 +49,7 @@ const devAndPeerDeps:string[] = [].concat(
 
 rmSync(`./node_modules/${namespace}/${name}`, { recursive: true, force: true })
 
-console.log(`Copying files from ${modulePath} to ./node_modules/${namespace}/${name}`)
-console.log(`The following dependencies will be skipped`, devAndPeerDeps)
+console.log(`Importing ${modulePath.replace('../','')} to ${process.cwd().split('/').pop()}`)
 
 const isDevPeerDev = (filePath:string)=>devAndPeerDeps.some(dependencyName=>filePath.includes(`node_modules/${dependencyName}/`))
 const isIgnored = (filePath:string)=>ignoredRegExp.some(regex=>new RegExp(regex).test(filePath))
