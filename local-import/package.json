@@ -1,6 +1,6 @@
 {
   "name": "@pepfar-react-lib/local-import",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "",
   "scripts": {
     "test": "rm -rf node_modules/@app && tsc && node build/import.js ./test/project",
