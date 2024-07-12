@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import {readFileSync} from "node:fs";
 import {PackageJson} from "./types/types.js";
 import {fork} from "node:child_process";
