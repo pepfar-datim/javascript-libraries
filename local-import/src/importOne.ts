@@ -4,18 +4,8 @@
 
 import cpy from 'cpy'
 import {readFileSync, rmSync} from "node:fs";
+import {PackageJson} from "./types/types.js";
 
-// Types
-
-type Map = {
-    [key:string]:string
-}
-
-type PackageJson = {
-    name: string;
-    devDependencies: Map
-    peerDependencies: Map
-}
 
 // Input
 
@@ -38,7 +28,7 @@ const ignoredRegExp = [
 
 const packageJson:PackageJson = JSON.parse(readFileSync(`${modulePath}/package.json`).toString())
 const [namespace, name] = packageJson.name.split('/')
-const parse = (map:Map)=>Object.keys(map||[])
+const parse = (map:Record<string,string>)=>Object.keys(map||[])
 
 const devAndPeerDeps:string[] = [].concat(
     parse(packageJson.devDependencies),
